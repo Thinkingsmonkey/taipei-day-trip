@@ -1,7 +1,8 @@
 from flask import *
 from server.extensions import db, api
 from flask_cors import CORS
-from server.controllers.attraction_space import acttraction_space
+from server.controllers.attraction_controller import attraction_space
+from server.controllers.mrt_controller import mrt_space
 
 app=Flask(__name__)
 
@@ -9,6 +10,7 @@ app.config["JSON_AS_ASCII"]=False
 app.config["TEMPLATES_AUTO_RELOAD"]=True
 app.config["SQLALCHEMY_DATABASE_URI"] = "mysql://root:12345678@localhost/taipeiAttractions"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config['ERROR_404_HELP'] = False
 db.init_app(app)
 api.init_app(app)
 CORS(app)
@@ -29,5 +31,6 @@ def thankyou():
 	return render_template("thankyou.html")
 
 
-api.add_namespace(acttraction_space)
-app.run(host="0.0.0.0", port=3000)
+api.add_namespace(attraction_space)
+api.add_namespace(mrt_space)
+app.run(host="0.0.0.0", port=3000, debug=True)

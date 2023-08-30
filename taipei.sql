@@ -1,27 +1,34 @@
 CREATE DATABASE  taipeiAttractions;
 USE taipeiAttractions;
-DROP TABLE attraction;
-DROP TABLE attractionImg;
+-- DROP TABLE attraction;
+-- DROP TABLE attractionImg;
 
+SELECT subquery.Mrt, subquery.num_around_attractions
+FROM (
+    SELECT attraction.Mrt, COUNT(attraction._id) AS num_around_attractions
+    FROM attraction
+    GROUP BY attraction.Mrt
+) AS subquery
+ORDER BY subquery.num_around_attractions DESC;
 
-
-
-INSERT INTO attractionImg(img, attraction_id) values("test", 1);
- 
-SELECT * FROM attractionImg;
-CREATE TABLE attractionImg(
-	id INT PRIMARY KEY AUTO_INCREMENT,
-    img VARCHAR(200) NOT NULL,
-    attraction_id INT NOT NULL,
-    FOREIGN KEY (attraction_id) REFERENCES attraction(_id) ON DELETE CASCADE
-    );
-
+SELECT attraction.Mrt, COUNT(attraction._id) AS num_around_attractions
+FROM attraction
+GROUP BY attraction.Mrt;
 
 INSERT INTO attraction(rate, direction, name, date,
  longitude, REF_WP, avBegin, langinfo,
  MRT, SERIAL_NO, RowNumber, CAT, MEMO_TIME,
  POI, file, idpt, latitude, description, _id,
  avEnd, address) values();
+
+SELECT * FROM attractionImg;
+CREATE TABLE attractionImg(
+	id INT PRIMARY KEY AUTO_INCREMENT,
+    img VARCHAR(200),
+    attraction_id INT,
+    FOREIGN KEY (attraction_id) REFERENCES attraction(_id) ON DELETE CASCADE
+    );
+
 
 SELECT * FROM attraction;
 CREATE TABLE attraction(

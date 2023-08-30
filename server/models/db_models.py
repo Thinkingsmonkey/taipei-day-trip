@@ -25,6 +25,7 @@ class Attraction(db.Model):
     
 
 class AttractionImg(db.Model):
+    __tablename__ = 'attractionImg' # 指定 table name
     id = db.Column(db.Integer, primary_key=True,  autoincrement=True)
     img = db.Column(db.String(255), nullable=False)
     attraction_id = db.Column(db.Integer, nullable=False)

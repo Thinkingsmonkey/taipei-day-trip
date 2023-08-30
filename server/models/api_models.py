@@ -1,10 +1,6 @@
 from flask_restx import fields
 from ..extensions import api
 
-acttractions_input_model = api.model("AttractionsInput", {
-  "page": fields.Integer(required=True),
-  "keyword": fields.String
-})
 
 attraction_model = api.model("Attraction", {
     "id": fields.Integer,
@@ -23,3 +19,12 @@ attractions_output_model = api.model("AttractionsOutput", {
     "nextPage": fields.Integer,
     "data": fields.List(fields.Nested(attraction_model))
 })
+
+attractions_id_output_model = api.model("AttractionsIdInput", {
+    "data": fields.Nested(attraction_model)
+})
+
+mrt_output_model = api.model("MrtOutput", {
+    "data": fields.List(fields.String)
+})
+
