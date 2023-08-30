@@ -8,7 +8,7 @@ app=Flask(__name__)
 
 app.config["JSON_AS_ASCII"]=False
 app.config["TEMPLATES_AUTO_RELOAD"]=True
-app.config["SQLALCHEMY_DATABASE_URI"] = "mysql://root:12345678@localhost/taipeiAttractions"
+app.config["SQLALCHEMY_DATABASE_URI"] = "mysql://root:MySQL_PASSWORD@localhost/taipeiAttractions"
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['ERROR_404_HELP'] = False
 db.init_app(app)
