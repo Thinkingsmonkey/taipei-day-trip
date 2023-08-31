@@ -20,11 +20,6 @@ attractions_output_model = api.model("AttractionsOutput", {
     "data": fields.List(fields.Nested(attraction_model))
 })
 
-attractions_id_output_model = api.model("AttractionsIdInput", {
+attraction_id_output_model = api.model("AttractionIdInput", {
     "data": fields.Nested(attraction_model)
 })
-
-mrt_output_model = api.model("MrtOutput", {
-    "data": fields.List(fields.String)
-})
-

@@ -1,8 +1,8 @@
 from flask import *
 from server.extensions import db, api
 from flask_cors import CORS
-from server.controllers.attraction_controller import attraction_space
-from server.controllers.mrt_controller import mrt_space
+from server.attractions.attractions_view import attraction_space 
+from server.mrt.mrt_view import mrt_space
 
 app=Flask(__name__)
 
