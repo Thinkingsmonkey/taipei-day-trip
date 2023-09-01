@@ -1,6 +1,6 @@
 from flask_restx import  abort
-from ..extensions import db
-from ..models.db_models import Attraction, AttractionImg
+from ...extensions import db
+from ...models.db_models import Attraction, AttractionImg
 from sqlalchemy import or_
 
 
@@ -30,7 +30,7 @@ def get_attraction_by_id(attractionId):
     return {"data": data}
 
 
-def get_attractions_list(page, keyword, mini_item, per_page):
+def get_attractions_list(page, keyword, start_item, per_page):
     if page < 0:
         return abort(400, "page is invalid")
 
@@ -41,11 +41,11 @@ def get_attractions_list(page, keyword, mini_item, per_page):
         is_mrt_attraction = Attraction.query.filter_by(MRT=keyword).first()
         if is_mrt_attraction:
             # 若是找出 page 要求的捷運站景點
-            attractions = Attraction.query.filter_by(MRT=keyword).offset(mini_item).limit(per_page)
+            attractions = Attraction.query.filter_by(MRT=keyword).offset(start_item).limit(per_page)
         else:
             # 若不是，使用模糊搜索找 page 要求的景點
             if "臺" not in keyword and "台" not in keyword:
-                attractions = Attraction.query.filter(Attraction.name.ilike(f'%{keyword}%')).offset(mini_item).limit(per_page)
+                attractions = Attraction.query.filter(Attraction.name.ilike(f'%{keyword}%')).offset(start_item).limit(per_page)
             else:
                 # 若 keyword 含 "台"、"臺" 使用 or_ 搜索兩者
                 if "台" in keyword or "臺" in keyword:
@@ -53,13 +53,13 @@ def get_attractions_list(page, keyword, mini_item, per_page):
                     big_keyword = keyword.replace("台", "臺")
                 condition  = or_(Attraction.name.ilike(f'%{small_keyword}%'),
                         Attraction.name.ilike(f'%{big_keyword}%'))
-                attractions = Attraction.query.filter(condition).offset(mini_item).limit(per_page)
+                attractions = Attraction.query.filter(condition).offset(start_item).limit(per_page)
     #! 如果沒有 keyword，搜索 page 的範圍
     else:
-        attractions = Attraction.query.order_by(Attraction._id).offset(mini_item).limit(per_page)
+        attractions = Attraction.query.order_by(Attraction._id).offset(start_item).limit(per_page)
 
     #! 檢測下一頁有無 item
-    next_page_item = attractions.offset(mini_item + per_page).limit(1).first()
+    next_page_item = attractions.offset(start_item + per_page).limit(1).first()
     if not next_page_item:
         next_page = None
     else:

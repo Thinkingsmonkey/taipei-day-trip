@@ -1,16 +1,12 @@
 from flask import *
 from server.extensions import db, api
 from flask_cors import CORS
-from server.attractions.attractions_view import attraction_space 
-from server.mrt.mrt_view import mrt_space
-
+from server.routes.attractions.attractions_view import attraction_space 
+from server.routes.mrt.mrt_view import mrt_space
+from config import Config
 app=Flask(__name__)
 
-app.config["JSON_AS_ASCII"]=False
-app.config["TEMPLATES_AUTO_RELOAD"]=True
-app.config["SQLALCHEMY_DATABASE_URI"] = "mysql://root:MySQL_PASSWORD@localhost/taipeiattractions"
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['ERROR_404_HELP'] = False
+app.config.from_object(Config)
 db.init_app(app)
 api.init_app(app)
 CORS(app)

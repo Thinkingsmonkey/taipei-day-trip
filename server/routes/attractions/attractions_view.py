@@ -36,6 +36,6 @@ class AttractionsListAPI(Resource):
         
         page = args["page"]
         keyword = args["keyword"]
-        mini_item =  12 * page
+        start_item =  12 * page
         per_page = 12
-        return get_attractions_list(page, keyword, mini_item, per_page)
+        return get_attractions_list(page, keyword, start_item, per_page)

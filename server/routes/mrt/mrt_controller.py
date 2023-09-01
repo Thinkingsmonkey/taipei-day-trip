@@ -1,6 +1,6 @@
 from flask_restx import abort
-from ..extensions import db
-from ..models.db_models import Attraction
+from ...extensions import db
+from ...models.db_models import Attraction
 from sqlalchemy import func
 
 def get_mrts_list():

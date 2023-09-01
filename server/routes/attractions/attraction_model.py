@@ -1,5 +1,5 @@
 from flask_restx import fields
-from ..extensions import api
+from ...extensions import api
 
 
 attraction_model = api.model("Attraction", {
