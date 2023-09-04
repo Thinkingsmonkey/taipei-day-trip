@@ -1,0 +1,230 @@
+{% extends "base.html" %}
+{% block head %}
+台北一日遊
+{% endblock%}
+
+{% block header %}
+<header>
+  <nav>
+    <div class="container py-d625">
+      <ul class="d-flex justify-content-between">
+        <li>
+          <a href="">
+            <h1 class="h1 fz-30 fw-7 text-primary">台北一日遊</h1>
+          </a>
+        </li>
+        <ul class="sitemap d-flex gap-d625 text-gray-70 p-d625 fw-5">
+          <li>
+            <p>預定行程</p>
+          </li>
+          <li>
+            <p>登入/註冊</p>
+          </li>
+        </ul>
+      </ul>
+    </div>
+  </nav>
+
+  <section class="banner" style=" background-image: url({{ url_for('static', filename='img/welcome.png') }})">
+    <div class="container py-85px pl-d625">
+      <h2 class="text-gray-10 mb-15px fz-28 lh-1d5 fw-7">輕鬆享受台北一日悠閒</h2>
+      <h3 class="text-gray-10 mb-25px fw-7 lh-1d5">探索每個角落，體驗城市的深度旅遊行程</h3>
+      <div class="search">
+        <input type="text" class="search__input p-15px fw-7" placeholder="輸入景點名稱查詢" ><img class="search__icon py-d5 px-15px bg-primary" src="{{ url_for('static', filename='img/search.png') }}" alt="">
+      </div>
+    </div>
+  </section>
+
+</header>
+{% endblock %}
+
+{% block main %}
+<main>
+  <div class="container py-2d5">
+    <ul class="d-flex align-items-center mb-1d25 px-15px">
+      <li><img class="text-gray-70" src="{{ url_for('static', filename='img/left_arrow.png') }}" alt=""></li>
+      <ul class="mrt-list d-flex grow-1 py-13px pl-d625 mr-d625">
+        <li class="py-5px px-15px">
+          <p class="text-gray-70 fw-5">劍潭</p>
+        </li>
+        <li class="py-5px px-15px">
+          <p class="text-gray-70 fw-5">劍潭</p>
+        </li>
+        <li class="py-5px px-15px">
+          <p class="text-gray-70 fw-5">劍潭</p>
+        </li>
+        <li class="py-5px px-15px">
+          <p class="text-gray-70 fw-5">劍潭</p>
+        </li>
+        <li class="py-5px px-15px">
+          <p class="text-gray-70 fw-5">劍潭</p>
+        </li>
+        <li class="py-5px px-15px">
+          <p class="text-gray-70 fw-5">劍潭</p>
+        </li>
+        <li class="py-5px px-15px">
+          <p class="text-gray-70 fw-5">劍潭</p>
+        </li>
+        <li class="py-5px px-15px">
+          <p class="text-gray-70 fw-5">劍潭</p>
+        </li>
+        <li class="py-5px px-15px">
+          <p class="text-gray-70 fw-5">劍潭</p>
+        </li>
+        <li class="py-5px px-15px">
+          <p class="text-gray-70 fw-5">劍潭</p>
+        </li>
+        <li class="py-5px px-15px">
+          <p class="text-gray-70 fw-5">劍潭</p>
+        </li>
+        <li class="py-5px px-15px">
+          <p class="text-gray-70 fw-5">劍潭</p>
+        </li>
+        <li class="py-5px px-15px">
+          <p class="text-gray-70 fw-5">劍潭</p>
+        </li>
+        <li class="py-5px px-15px">
+          <p class="text-gray-70 fw-5">劍潭</p>
+        </li>
+        <li class="py-5px px-15px">
+          <p class="text-gray-70 fw-5">劍潭</p>
+        </li>
+        <li class="py-5px px-15px">
+          <p class="text-gray-70 fw-5">劍潭</p>
+        </li>
+        <li class="py-5px px-15px">
+          <p class="text-gray-70 fw-5">劍潭</p>
+        </li>
+        <li class="py-5px px-15px">
+          <p class="text-gray-70 fw-5">劍潭</p>
+        </li>
+      </ul>
+      <li><img class="text-gray-70" src="{{ url_for('static', filename='img/right_arrow.png') }}" alt=""></li>
+    </ul>
+    <ul class="card_list p-15px d-flex flex-wrap justify-content-between gap-1d875">
+      <li class="card">
+        <div class="card__heard">
+          <img src="{{ url_for('static', filename='img/mrt_test.png') }}" alt="" class="card__img">
+          <div class="img__cover p-d625 d-flex align-items-center">
+            <p class="card__title text-white">平安鐘</p>
+          </div>
+        </div>
+        <ul class="card__content p-d625 d-flex justify-content-between align-items-center  text-gray-50">
+          <li>
+            <p>忠孝復興</p>
+          </li>
+          <li>
+            <p>忠孝復興</p>
+          </li>
+        </ul>
+      </li>
+      <li class="card">
+        <div class="card__heard">
+          <img src="{{ url_for('static', filename='img/mrt_test.png') }}" alt="" class="card__img">
+          <div class="img__cover p-d625 d-flex align-items-center">
+            <p class="card__title text-white">平安鐘</p>
+          </div>
+        </div>
+        <ul class="card__content p-d625 d-flex justify-content-between align-items-center  text-gray-50">
+          <li>
+            <p>忠孝復興</p>
+          </li>
+          <li>
+            <p>忠孝復興</p>
+          </li>
+        </ul>
+      </li>
+      <li class="card">
+        <div class="card__heard">
+          <img src="{{ url_for('static', filename='img/mrt_test.png') }}" alt="" class="card__img">
+          <div class="img__cover p-d625 d-flex align-items-center">
+            <p class="card__title text-white">平安鐘</p>
+          </div>
+        </div>
+        <ul class="card__content p-d625 d-flex justify-content-between align-items-center  text-gray-50">
+          <li>
+            <p>忠孝復興</p>
+          </li>
+          <li>
+            <p>忠孝復興</p>
+          </li>
+        </ul>
+      </li>
+      <li class="card">
+        <div class="card__heard">
+          <img src="{{ url_for('static', filename='img/mrt_test.png') }}" alt="" class="card__img">
+          <div class="img__cover p-d625 d-flex align-items-center">
+            <p class="card__title text-white">平安鐘</p>
+          </div>
+        </div>
+        <ul class="card__content p-d625 d-flex justify-content-between align-items-center  text-gray-50">
+          <li>
+            <p>忠孝復興</p>
+          </li>
+          <li>
+            <p>忠孝復興</p>
+          </li>
+        </ul>
+      </li>
+      <li class="card">
+        <div class="card__heard">
+          <img src="{{ url_for('static', filename='img/mrt_test.png') }}" alt="" class="card__img">
+          <div class="img__cover p-d625 d-flex align-items-center">
+            <p class="card__title text-white">平安鐘</p>
+          </div>
+        </div>
+        <ul class="card__content p-d625 d-flex justify-content-between align-items-center  text-gray-50">
+          <li>
+            <p>忠孝復興</p>
+          </li>
+          <li>
+            <p>忠孝復興</p>
+          </li>
+        </ul>
+      </li>
+      <li class="card">
+        <div class="card__heard">
+          <img src="{{ url_for('static', filename='img/mrt_test.png') }}" alt="" class="card__img">
+          <div class="img__cover p-d625 d-flex align-items-center">
+            <p class="card__title text-white">平安鐘</p>
+          </div>
+        </div>
+        <ul class="card__content p-d625 d-flex justify-content-between align-items-center  text-gray-50">
+          <li>
+            <p>忠孝復興</p>
+          </li>
+          <li>
+            <p>忠孝復興</p>
+          </li>
+        </ul>
+      </li>
+      <li class="card">
+        <div class="card__heard">
+          <img src="{{ url_for('static', filename='img/mrt_test.png') }}" alt="" class="card__img">
+          <div class="img__cover p-d625 d-flex align-items-center">
+            <p class="card__title text-white">平安鐘</p>
+          </div>
+        </div>
+        <ul class="card__content p-d625 d-flex justify-content-between align-items-center  text-gray-50">
+          <li>
+            <p>忠孝復興</p>
+          </li>
+          <li>
+            <p>忠孝復興</p>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</main>
+{% endblock %} 
+
+{% block footer %}
+<footer class="bg-gray-50 text-center py-2d5">
+  <p class="text-white">COPYRIGHT © 2023 台北一日遊</p>
+</footer>
+{% endblock %}
+
+{% block javascript %}
+<script src="{{ url_for('static', filename='js/attraction.js') }}"></script>
+{% endblock %}
