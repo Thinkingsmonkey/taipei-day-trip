@@ -8,6 +8,7 @@ app=Flask(__name__, static_folder="server/views/public")
 app.template_folder = "server/views/templates"
 
 app.config.from_object(Config)
+app.json.ensure_ascii = False
 db.init_app(app)
 CORS(app)
 

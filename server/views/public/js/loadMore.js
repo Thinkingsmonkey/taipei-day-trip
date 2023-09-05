@@ -5,7 +5,7 @@ const options = {
 
 const observer = new IntersectionObserver(handleIntersection, options);
 
-const footer = document.querySelector('.footer');
+const footer = document.querySelector('footer');
 observer.observe(footer);
 
 const debouncedFetchData  = debounced(getAttractions, 300)

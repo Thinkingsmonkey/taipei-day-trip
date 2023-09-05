@@ -5,6 +5,7 @@ let nextPage = null;
 async function getAttractions() {
   url = "http://127.0.0.1:3000/api/attractions";
   page = 0;
+  console.log("test");
   try {
     const response = await fetch(url + `?page=${page}`);
     if (response.ok !== true)
