@@ -1,7 +1,16 @@
 $font-family: 'Noto Sans TC';
 $bg-primary: white;
 
+$width_height: (
+  100: 100%,
+  100vh: 100vh
+);
 
+$position_place: (
+  0: 0,
+  50: 50%,
+  100: 100%
+);
 
 
 $space: (

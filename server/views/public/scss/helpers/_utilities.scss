@@ -12,6 +12,33 @@
   }
 }
 
+
+// width height
+@each $name, $place in $position_place {
+  .bottom-#{$name} {
+    bottom: $place;
+  }
+  .top-#{$name} {
+    top: $place;
+  }
+  .left-#{$name} {
+    left: $place;
+  }
+  .right-#{$name} {
+    right: $place;
+  }
+}
+// width height
+@each $name, $size in $width_height {
+  .w-#{$name} {
+    width: $size;
+  }
+  .h-#{$name} {
+    height: $size;
+  }
+}
+
+
 // color: text、bg
 @each $name, $color in $color {
   .text-#{$name} {

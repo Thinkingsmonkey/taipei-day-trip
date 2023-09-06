@@ -1,19 +1,31 @@
 // variable
+const body = document.querySelector("body");
+const searchInput = document.querySelector('.search__input');
+const searchBtn = document.querySelector('.search__btn');
+const mrtList = document.querySelector(".mrt-list");
+const leftArrow = document.querySelector('.left-arrow');
+const rightArrow = document.querySelector('.right-arrow');
+const cardList = document.querySelector(".card_list");
 let nextPage = null;
+let keyword = "";
+
+// set Page、keyword
+const setParameter = (newNextPage, newKeyword = "") => {
+  nextPage = newNextPage;
+  keyword = newKeyword;
+}
 
 // fetch function
-async function getAttractions() {
+async function getAttractions(page = 0, keyword = "") {
   url = "http://127.0.0.1:3000/api/attractions";
-  page = 0;
-  console.log("test");
   try {
-    const response = await fetch(url + `?page=${page}`);
+    const response = await fetch(url + `?page=${page}&keyword=${keyword}`);
     if (response.ok !== true)
       throw Error(`data fetch not successed, ${response.status}`);
     const data = await response.json();
     return data;
   } catch (error) {
-    return error.message;
+    return error.message; 
   }
 }
 
@@ -33,10 +45,10 @@ async function getMrts() {
 // create function
 const createCard = (data) => {
   const liElement = document.createElement("li");
-  liElement.classList.add("card", "d-flex", "d-flex-column");
+  liElement.classList.add("card", "d-flex", "d-flex-column", "cursor-pointer");
 
   const divHeard = document.createElement("div");
-  divHeard.classList.add("card__heard", "grow-1");
+  divHeard.classList.add("card__head", "grow-1");
 
   const imgElement = document.createElement("img");
   imgElement.src = data.images;
@@ -87,34 +99,29 @@ const createCard = (data) => {
   return liElement;
 };
 
-function createMrt(data) {
+const createMrt = (data) => {
   const mrtLi = document.createElement("li");
-  mrtLi.classList.add("py-5px", "px-15px");
+  mrtLi.classList.add("mrt_item", "py-5px", "px-15px");
 
   const mrtName = document.createElement("p");
-  mrtName.classList.add("text-gray-70", "fw-5");
+  mrtName.classList.add("text-gray-70", "fw-5", "cursor-pointer");
   mrtName.textContent = data;
 
   mrtLi.appendChild(mrtName);
   return mrtLi;
-}
+};
 
-// event
-window.addEventListener("DOMContentLoaded", async () => {
-  // mrtList
-  const mrtList = document.querySelector(".mrt-list");
-  const cardList = document.querySelector(".card_list");
+const createFooter = (data) => {
+  const footer = document.createElement("footer");
+  footer.classList.add("bg-gray-50", "text-center", "py-2d5", "w-100", "poa");
+  const copyright = document.createElement("p");
+  copyright.classList.add("text-white");
+  copyright.textContent = "COPYRIGHT © 2023 台北一日遊";
+  footer.appendChild(copyright);
+  return footer;
+};
 
-  const mrtJSON = await getMrts();
-  mrtJSON.data.forEach((mrtName) => {
-    const mrt = createMrt(mrtName);
-    mrtList.appendChild(mrt);
-  });
-
-  // cardList
-  const data = await getAttractions();
-  if (typeof data === "string") console.log(data);
-  nextPage = data.nextPage;
+const appendCard = (data, cardList) => {
   data.data.forEach((data) => {
     const cardData = {
       images: data.images[0],
@@ -125,4 +132,5 @@ window.addEventListener("DOMContentLoaded", async () => {
     const card = createCard(cardData);
     cardList.appendChild(card);
   });
-});
+};
+

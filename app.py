@@ -8,7 +8,6 @@ app=Flask(__name__, static_folder="server/views/public")
 app.template_folder = "server/views/templates"
 
 app.config.from_object(Config)
-app.json.ensure_ascii = False
 db.init_app(app)
 CORS(app)
 
@@ -31,4 +30,4 @@ def thankyou():
 api.init_app(app)
 api.add_namespace(attraction_space)
 api.add_namespace(mrt_space)
-app.run(host="0.0.0.0", port=3000, debug=True)
+app.run(host="0.0.0.0", port=3000)

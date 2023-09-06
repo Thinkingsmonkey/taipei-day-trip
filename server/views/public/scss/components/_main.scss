@@ -3,6 +3,9 @@
   height: 50px;
   white-space: nowrap;
   overflow: hidden;
+  .mrt_item:hover > p{
+    color: #000000;
+  }
 }
 
 .card {
@@ -11,11 +14,24 @@
   overflow: hidden;
   border-radius: 5px;
   border: 1px solid #e8e8e8;
+  &:hover &__img,
+  &:hover .img__cover{
+    opacity: .8;
+  }
+  &:hover {
+    box-shadow: 0px 0px 10px 0px #abc;
+  }
   &__img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     display: block;
+  }
+  &__content {
+    line-height: 1.5625;
+  }
+  &__head {
+    height: 197px;
   }
   .img__cover {
     width: 100%;
@@ -23,8 +39,5 @@
     position: absolute;
     bottom: 45px;
     background-color: rgba($color: #000000, $alpha: 0.6);
-  }
-  &__content {
-    height: 45px;
   }
 }
