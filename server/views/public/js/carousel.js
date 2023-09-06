@@ -1,4 +1,4 @@
-let scrollAmount = mrtList.offsetWidth - 40; 
+let scrollAmount = mrtList.offsetWidth - 80; 
 
 leftArrow.addEventListener('click', function() {
   mrtList.scrollBy({
