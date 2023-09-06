@@ -17,7 +17,7 @@ const setParameter = (newNextPage, newKeyword = "") => {
 
 // fetch function
 async function getAttractions(page = 0, keyword = "") {
-  url = "http://127.0.0.1:3000/api/attractions";
+  url = "http://54.65.247.64:3000/api/attractions";
   try {
     const response = await fetch(url + `?page=${page}&keyword=${keyword}`);
     if (response.ok !== true)
@@ -30,7 +30,7 @@ async function getAttractions(page = 0, keyword = "") {
 }
 
 async function getMrts() {
-  url = "http://127.0.0.1:3000/api/mrts";
+  url = "http://54.65.247.64:3000/api/mrts";
   try {
     const response = await fetch(url);
     if (response.ok !== true)
