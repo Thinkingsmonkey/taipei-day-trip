@@ -1076,4 +1076,7 @@ body {
   .card {
     width: 100%;
   }
+  .card__head {
+    height: 235px;
+  }
 }/*# sourceMappingURL=index.css.map */
