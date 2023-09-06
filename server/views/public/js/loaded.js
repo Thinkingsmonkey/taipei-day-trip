@@ -7,7 +7,6 @@ window.addEventListener("DOMContentLoaded", async () => {
     const mrt = createMrt(mrtName);
     mrtList.appendChild(mrt);
   });
-  console.dir(mrtList);
 
   // cardList
   const data = await getAttractions();
