@@ -48,7 +48,7 @@ const createCard = (data) => {
   liElement.classList.add("card", "d-flex", "d-flex-column", "cursor-pointer");
 
   const divHeard = document.createElement("div");
-  divHeard.classList.add("card__head", "grow-1");
+  divHeard.classList.add("card__head", "grow-1", "por");
 
   const imgElement = document.createElement("img");
   imgElement.src = data.images;
