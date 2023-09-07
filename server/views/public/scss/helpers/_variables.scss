@@ -1,0 +1,55 @@
+$font-family: 'Noto Sans TC';
+$bg-primary: white;
+
+$width_height: (
+  100: 100%,
+  100vh: 100vh
+);
+
+$position_place: (
+  0: 0,
+  50: 50%,
+  100: 100%
+);
+
+
+$space: (
+  d25: .25rem,
+  d625: .625rem,
+  d5: .5rem,
+  1: 1rem,
+  1d25: 1.25rem,
+  1d875: 1.875rem,
+  2d5: 2.5rem,
+  5px: 5px,
+  13px: 13px,
+  15px: 15px,
+  25px: 25px,
+  35px: 35px,
+  85px: 85px
+);
+
+$font-size: (
+  30: 30px,
+  28: 28px,
+  24: 24px,
+  19: 19px,
+  16: 16px
+);
+$font-weight: (
+  5: 500,
+  7: 700,
+);
+
+$line-height: (
+  1: 1,
+  1d5: 1.5,
+);
+
+$color: (
+  primary: #489,
+  gray-50: #757575,
+  gray-70: #666666,
+  gray-10: #F8F8F8,
+  white: white
+);

@@ -1,18 +1,14 @@
 from flask import *
 from server.extensions import db, api
 from flask_cors import CORS
-from server.controllers.attraction_controller import attraction_space
-from server.controllers.mrt_controller import mrt_space
+from server.routes.attractions.attractions_view import attraction_space 
+from server.routes.mrt.mrt_view import mrt_space
+from config import Config
+app=Flask(__name__, static_folder="server/views/public")
+app.template_folder = "server/views/templates"
 
-app=Flask(__name__)
-
-app.config["JSON_AS_ASCII"]=False
-app.config["TEMPLATES_AUTO_RELOAD"]=True
-app.config["SQLALCHEMY_DATABASE_URI"] = "mysql://root:MySQL_PASSWORD@localhost/taipeiattractions"
-app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['ERROR_404_HELP'] = False
+app.config.from_object(Config)
 db.init_app(app)
-api.init_app(app)
 CORS(app)
 
 
@@ -31,6 +27,8 @@ def thankyou():
 	return render_template("thankyou.html")
 
 
+api.init_app(app)
 api.add_namespace(attraction_space)
 api.add_namespace(mrt_space)
-app.run(host="0.0.0.0", port=3000, debug=True)
+# app.run(host="0.0.0.0", port=3000, debug=True) # 開發環境使用
+app.run(host="0.0.0.0", port=3000) # 部署環境使用

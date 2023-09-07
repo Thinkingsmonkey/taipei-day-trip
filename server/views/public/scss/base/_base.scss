@@ -1,0 +1,70 @@
+/* 基本 */
+* {
+  box-sizing: border-box;
+  font-family: $font-family;
+}
+ul,
+li {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+a {
+  text-decoration: none;
+}
+img {
+  max-width: 100%;
+  height: auto;
+  vertical-align: middle;
+}
+
+
+// layout
+.container {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+.text-center {
+  text-align: center;
+}
+.cursor-pointer{
+  cursor: pointer;
+}
+
+// position
+.poa {
+  position: absolute;
+}
+.por {
+  position: relative;
+}
+
+
+
+// flex
+.d-flex {
+  display: flex;
+}
+.d-flex-column {
+  flex-direction: column;
+}
+.d-flex-row-reverse {
+  flex-direction: row-reverse;
+}
+.flex-wrap {
+  flex-wrap: wrap;
+}
+.justify-content-between {
+  justify-content: space-between;
+}
+.justify-content-center {
+  justify-content: center;
+}
+.align-items-center {
+  align-items: center;
+}
+.grow-1{
+  flex-grow: 1;
+}
+// 

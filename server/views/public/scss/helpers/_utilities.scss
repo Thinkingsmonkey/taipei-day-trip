@@ -1,0 +1,128 @@
+//elements get appended with "__" and the $name
+@mixin e($name, $root) {
+  @at-root   #{$root}__#{$name} {
+    @content;
+  }
+}
+
+//modifiers get appended with "--" and the $name
+@mixin m($name, $root) {
+  @at-root   #{$root}--#{$name} {
+    @content;
+  }
+}
+
+
+// width height
+@each $name, $place in $position_place {
+  .bottom-#{$name} {
+    bottom: $place;
+  }
+  .top-#{$name} {
+    top: $place;
+  }
+  .left-#{$name} {
+    left: $place;
+  }
+  .right-#{$name} {
+    right: $place;
+  }
+}
+// width height
+@each $name, $size in $width_height {
+  .w-#{$name} {
+    width: $size;
+  }
+  .h-#{$name} {
+    height: $size;
+  }
+}
+
+
+// color: text、bg
+@each $name, $color in $color {
+  .text-#{$name} {
+    color: $color;
+  }
+  .bg-#{$name} {
+    background-color: $color;
+  }
+}
+
+
+// font-size
+@each $name, $size in $font-size {
+  .fz-#{$name} {
+    font-size: $size;
+  }
+}
+
+
+// font-weight
+@each $name, $weight in $font-weight {
+  .fw-#{$name} {
+    font-weight: $weight;
+  }
+}
+
+
+
+// line-height
+@each $name, $height in $line-height {
+  .lh-#{$name} {
+    line-height: $height;
+  }
+}
+
+
+// space: padding、margin、gap
+@each $name, $space in $space {
+  .gap-#{$name} {
+    gap: $space;
+  }
+
+  .p-#{$name} {
+    padding: $space;
+  }
+  .pt-#{$name} {
+    padding-top: $space;
+  }
+  .pb-#{$name} {
+    padding-bottom: $space;
+  }
+  .pl-#{$name} {
+    padding-left: $space;
+  }
+  .pr-#{$name} {
+    padding-right: $space;
+  }
+  .px-#{$name} {
+    padding-right: $space;
+    padding-left: $space;
+  }
+  .py-#{$name} {
+    padding-top: $space;
+    padding-bottom: $space;
+  }
+
+  .mt-#{$name} {
+    margin-top: $space;
+  }
+  .mb-#{$name} {
+    margin-bottom: $space;
+  }
+  .ml-#{$name} {
+    margin-left: $space;
+  }
+  .mr-#{$name} {
+    margin-right: $space;
+  }
+  .mx-#{$name} {
+    margin-right: $space;
+    margin-left: $space;
+  }
+  .my-#{$name} {
+    margin-top: $space;
+    margin-bottom: $space;
+  }
+}
