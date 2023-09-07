@@ -10,10 +10,16 @@ function handleIntersection(entries, observer) {
   entries.forEach((entry) => {
     if (entry.isIntersecting) {
       if (nextPage !== null) {
-        debouncedFetchData(nextPage, keyword);
+        observer.unobserve(entry.target);
+        debouncedFetchData(nextPage, keyword)
+          .then(() => {
+            observer.observe(entry.target);
+          })
+          .catch((error) => {
+            console.error("An error occurred:", error);
+          });
       } else {
-        const footer = document.querySelector("footer");
-        observer.unobserve(footer)
+        observer.unobserve(entry.target);
       }
     }
   });
@@ -25,10 +31,17 @@ function debounced(func, delay) {
     clearTimeout(timer);
     const context = this;
     const args = arguments;
-    timer = setTimeout(async () => {
-      const data = await func.apply(context, args);
-      setParameter(data.nextPage, keyword)
-      appendCard(data, cardList);
-    }, delay);
+    return new Promise((resolve, reject) => {
+      timer = setTimeout(async () => {
+        try {
+          const data = await func.apply(context, args);
+          setParameter(data.nextPage, keyword);
+          appendCard(data, cardList);
+          resolve(data);
+        } catch (error) {
+          reject(error);
+        }
+      }, 300);
+    });
   };
 }

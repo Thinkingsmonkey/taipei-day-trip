@@ -25,7 +25,7 @@ async function getAttractions(page = 0, keyword = "") {
     const data = await response.json();
     return data;
   } catch (error) {
-    return error.message; 
+    return error; 
   }
 }
 
@@ -38,7 +38,7 @@ async function getMrts() {
     const data = await response.json();
     return data;
   } catch (error) {
-    return error.message;
+    return error;
   }
 }
 
@@ -101,7 +101,7 @@ const createCard = (data) => {
 
 const createMrt = (data) => {
   const mrtLi = document.createElement("li");
-  mrtLi.classList.add("mrt_item", "py-5px", "px-15px");
+  mrtLi.classList.add("mrt_item", "py-d25", "px-15px");
 
   const mrtName = document.createElement("p");
   mrtName.classList.add("text-gray-70", "fw-5", "cursor-pointer");

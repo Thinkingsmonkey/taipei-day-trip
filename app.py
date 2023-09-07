@@ -30,4 +30,5 @@ def thankyou():
 api.init_app(app)
 api.add_namespace(attraction_space)
 api.add_namespace(mrt_space)
-app.run(host="0.0.0.0", port=3000)
+# app.run(host="0.0.0.0", port=3000, debug=True) # 開發環境使用
+app.run(host="0.0.0.0", port=3000) # 部署環境使用

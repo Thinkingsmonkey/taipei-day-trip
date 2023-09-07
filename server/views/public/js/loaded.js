@@ -10,9 +10,12 @@ window.addEventListener("DOMContentLoaded", async () => {
 
   // cardList
   const data = await getAttractions();
-  if (typeof data === "string") console.log(data);
-  setParameter(data.nextPage, keyword)
-  appendCard(data, cardList);
+  if (data instanceof Error) {
+    console.log(data.message);
+  } else {
+    setParameter(data.nextPage, keyword);
+    appendCard(data, cardList);
+  }
 
   // footer
   body.appendChild(createFooter());
