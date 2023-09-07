@@ -28,7 +28,6 @@ function debounced(func, delay) {
     timer = setTimeout(async () => {
       const data = await func(...args);
       observer.observe(footer);
-      console.log("await ok");
       setParameter(data.nextPage, keyword);
       appendCard(data, cardList);
     }, delay);
