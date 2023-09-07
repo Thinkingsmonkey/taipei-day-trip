@@ -10,14 +10,7 @@ function handleIntersection(entries, observer) {
   entries.forEach((entry) => {
     if (entry.isIntersecting) {
       if (nextPage !== null) {
-        observer.unobserve(entry.target);
-        debouncedFetchData(nextPage, keyword)
-          .then(() => {
-            observer.observe(entry.target);
-          })
-          .catch((error) => {
-            console.error("An error occurred:", error);
-          });
+        debouncedFetchData(nextPage, keyword);
       } else {
         observer.unobserve(entry.target);
       }
@@ -27,21 +20,17 @@ function handleIntersection(entries, observer) {
 
 function debounced(func, delay) {
   let timer;
-  return function () {
+  return function (...args) {
+    const footer = document.querySelector("footer");
+    observer.unobserve(footer);
     clearTimeout(timer);
-    const context = this;
-    const args = arguments;
-    return new Promise((resolve, reject) => {
-      timer = setTimeout(async () => {
-        try {
-          const data = await func.apply(context, args);
-          setParameter(data.nextPage, keyword);
-          appendCard(data, cardList);
-          resolve(data);
-        } catch (error) {
-          reject(error);
-        }
-      }, 300);
-    });
+    
+    timer = setTimeout(async () => {
+      const data = await func(...args);
+      observer.observe(footer);
+      console.log("await ok");
+      setParameter(data.nextPage, keyword);
+      appendCard(data, cardList);
+    }, delay);
   };
 }
