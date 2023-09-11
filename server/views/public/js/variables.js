@@ -21,7 +21,7 @@ async function getAttractions(page = 0, keyword = "") {
   try {
     const response = await fetch(url + `?page=${page}&keyword=${keyword}`);
     if (response.ok !== true)
-      throw Error(`data fetch not successed, ${response.status}`);
+      throw new Error(`data fetch not successed, ${response.status}`);
     const data = await response.json();
     return data;
   } catch (error) {
@@ -45,14 +45,14 @@ async function getMrts() {
 // create function
 const createCard = (data) => {
   const liElement = document.createElement("li");
-  liElement.classList.add("card", "d-flex", "d-flex-column", "cursor-pointer");
+  liElement.classList.add("card", "card-index", "d-flex", "d-flex-column", "cursor-pointer");
 
   const divHeard = document.createElement("div");
   divHeard.classList.add("card__head", "grow-1", "por");
 
   const imgElement = document.createElement("img");
   imgElement.src = data.images;
-  imgElement.alt = "";
+  imgElement.alt = "attraction";
   imgElement.classList.add("card__img");
   const divCover = document.createElement("div");
   divCover.classList.add(

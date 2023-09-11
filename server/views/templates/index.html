@@ -3,40 +3,19 @@
 台北一日遊
 {% endblock%}
 
-{% block header %}
-<header>
-  <nav>
-    <div class="container py-d625">
-      <ul class="d-flex justify-content-between">
-        <li>
-          <a href="">
-            <h1 class="h1 fz-30 fw-7 text-primary">台北一日遊</h1>
-          </a>
-        </li>
-        <ul class="sitemap d-flex gap-d625 text-gray-70 p-d625 fw-5">
-          <li>
-            <p>預定行程</p>
-          </li>
-          <li>
-            <p>登入/註冊</p>
-          </li>
-        </ul>
-      </ul>
+{% block banner %}
+<section class="banner" style=" background-image: url({{ url_for('static', filename='img/welcome.png') }})">
+  <div class="container py-85px pl-d625">
+    <h2 class="text-gray-10 mb-15px fz-28 lh-1d5 fw-7">輕鬆享受台北一日悠閒</h2>
+    <h3 class="text-gray-10 mb-25px fw-7 lh-1d5">探索每個角落，體驗城市的深度旅遊行程</h3>
+    <div class="search">
+      <input type="text" class="search__input p-15px fw-7" placeholder="輸入景點名稱查詢" ><img class="search__btn cursor-pointer py-d5 px-15px bg-primary" src="{{ url_for('static', filename='img/search.png') }}" alt="">
     </div>
-  </nav>
-
-  <section class="banner" style=" background-image: url({{ url_for('static', filename='img/welcome.png') }})">
-    <div class="container py-85px pl-d625">
-      <h2 class="text-gray-10 mb-15px fz-28 lh-1d5 fw-7">輕鬆享受台北一日悠閒</h2>
-      <h3 class="text-gray-10 mb-25px fw-7 lh-1d5">探索每個角落，體驗城市的深度旅遊行程</h3>
-      <div class="search">
-        <input type="text" class="search__input p-15px fw-7" placeholder="輸入景點名稱查詢" ><img class="search__btn cursor-pointer py-d5 px-15px bg-primary" src="{{ url_for('static', filename='img/search.png') }}" alt="">
-      </div>
-    </div>
-  </section>
-
-</header>
+  </div>
+</section>
 {% endblock %}
+
+
 
 {% block main %}
 <main>

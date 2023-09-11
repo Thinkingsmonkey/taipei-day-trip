@@ -1,0 +1,64 @@
+.attraction__main{
+  border-top: 1px solid $gray-20;
+}
+
+
+.card__carousel{
+  .pagination-left{
+    left: 10px;
+  }
+  .pagination-right{
+    right: 10px;
+  }
+  .navigations {
+    bottom: 10px;
+    .navigation-radio{
+      accent-color: black;
+    }
+  }
+}
+
+.card__info{
+  .text-height{
+    line-height: 22px;
+  }
+  .card__body {
+    border-radius: 5px;
+    .card__description {
+      line-height: 24px;
+    }
+    .card__button{
+      border-radius: 5px;
+      border: none;
+    }
+    .date__option{
+      height: 35px;
+    }
+  }
+  .title {
+    line-height: 33px;
+  }
+  .category, .mrt{
+    display: inline-block;
+  }
+  .time-radio{
+    accent-color: $primary;
+    width: 22px;
+    height: 22px;
+  }
+  
+}
+
+
+.horizontal-line{
+  border: none;
+  border-bottom: 1px solid;
+  border-color: #E8E8E8;
+}
+
+.attraction__infors {
+  line-height: 1.5;
+  .infors__title{
+    line-height: 2;
+  }
+}
