@@ -1,0 +1,47 @@
+body {
+  background-color: $bg-primary;
+}
+.mrt-list {
+  width: calc(100% - 84px);
+  white-space: nowrap;
+  overflow: hidden;
+  .mrt_item:hover > p{
+    color: #000000;
+  }
+}
+
+
+
+.card-index {
+  width: 23%;
+  border-radius: 5px;
+  border: 1px solid #e8e8e8;
+  &:hover .card__img,
+  &:hover .img__cover{
+    opacity: .8;
+  }
+  &:hover {
+    box-shadow: 0px 0px 10px 0px #abc;
+  }
+  .card__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+  .card__content {
+    line-height: 1.5625;
+  }
+  .card__head {
+    height: 197px;
+  }
+  .img__cover {
+    width: 100%;
+    height: 40px;
+    position: absolute;
+    bottom: 0;
+    background-color: rgba($color: #000000, $alpha: 0.6);
+  }
+}
+
+

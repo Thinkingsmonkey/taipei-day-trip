@@ -1,0 +1,94 @@
+{% extends "base.html" %} {% block head %} 台北一日遊-景點 {% endblock%} {%
+block main %}
+<main class="attraction__main">
+  <div class="container">
+    <div class="card attraction__card d-flex pt-2d5 px-15px pb-2d5">
+      <div class="card__carousel por mr-1d875">
+        <img
+          src="{{ url_for('static', filename='img/left_btn.png') }}"
+          alt=""
+          class="pagination-left poa vertical-center"
+        /><img
+          src="{{ url_for('static', filename='img/right_btn.png') }}"
+          alt=""
+          class="pagination-right poa vertical-center"
+        />
+        <div class="navigations poa w-100 text-center">
+
+        </div>
+        <div class="carousel h-100">
+          <ul class="card__imgs d-flex h-100">
+            
+          </ul>
+        </div>
+      </div>
+      <div class="card__info shrink-0 text-gray-70 grow-1">
+        <div class="card__title mb-1d25">
+          <h3 class="title mb-15px fz-24"></h3>
+          <span class="category fw-5 text-height"></span>
+          <span>at</span>
+          <span class="mrt fw-5 text-height"></span>
+        </div>
+        <div class="card__body pt-15px px-1d25 pb-2d5 bg-gray-20">
+          <h3 class="mb-15px text-height">訂購導覽行程</h3>
+          <p class="mb-15px fw-5 card__description">
+            以此景點為中心的一日行程，帶您探索城市角落故事
+          </p>
+          <div class="card__date d-flex mb-15px por">
+            <h3 class="por vertical-center mr-5px">選擇日期：</h3>
+            <input class="date__option py-5px pl-d625" type="date"  />
+          </div>
+          <div class="card__time d-flex align-items-center mb-15px">
+            <h3 class="mr-d625">選擇時間：</h3>
+            <input
+              class="time-radio mr-d25"
+              type="radio"
+              name="time"
+              value="morning"
+            /><span class="mr-1d125 fw-5">上半天</span
+            ><input
+              class="time-radio mr-d25"
+              type="radio"
+              name="time"
+              value="aftermoon"
+            /><span class="fw-5">下半天</span>
+          </div>
+          <div class="card__price d-flex mb-25px">
+            <h3 class="text-height">導覽費用：</h3>
+            <span class="attraction__price fw-5 text-height"
+              >新台幣 2000 元</span
+            >
+          </div>
+          <button
+            class="card__button py-d25 px-1d25 bg-primary text-white fz-19"
+          >
+            開始預約行程
+          </button>
+        </div>
+      </div>
+    </div>
+    <hr class="horizontal-line" />
+    <div class="attraction__infors text-gray-70 pt-3d125 pb-5">
+      <p class="infors__description mb-1d25"></p>
+      <div class="mb-1d25">
+        <h3 class="infors__title">景點地址：</h3>
+        <p class="infos__address"></p>
+      </div>
+      <div>
+        <h3 class="infors__title">交通方式：</h3>
+        <p class="infos__transport"></p>
+      </div>
+    </div>
+  </div>
+</main>
+{% endblock %}
+
+{% block footer %}
+<footer class="bg-gray-50 text-center py-2d5 w-100 poa">
+  <p class="text-white">COPYRIGHT © 2023 台北一日遊</p>
+</footer>
+{% endblock %}
+
+{% block javascript %}
+<script src="{{ url_for('static', filename='js/attraction/attractionPage.js') }}"></script>
+{%endblock %}

@@ -12,12 +12,6 @@ li {
 a {
   text-decoration: none;
 }
-img {
-  max-width: 100%;
-  height: auto;
-  vertical-align: middle;
-}
-
 
 // layout
 .container {
@@ -28,8 +22,11 @@ img {
 .text-center {
   text-align: center;
 }
-.cursor-pointer{
+.cursor-pointer {
   cursor: pointer;
+}
+.object-fit-cover {
+  object-fit: cover;
 }
 
 // position
@@ -40,7 +37,19 @@ img {
   position: relative;
 }
 
-
+// 置中
+.vertical-center {
+  top: 0;
+  bottom: 0;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+.horizontal-center {
+  left: 0;
+  right: 0;
+  margin-left: auto;
+  margin-right: auto;
+}
 
 // flex
 .d-flex {
@@ -64,7 +73,11 @@ img {
 .align-items-center {
   align-items: center;
 }
-.grow-1{
+.grow-1 {
   flex-grow: 1;
 }
-// 
+
+.shrink-0{
+  flex-shrink: 0;
+}
+//
