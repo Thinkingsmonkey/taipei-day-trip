@@ -1323,21 +1323,31 @@ body {
   border-top: 1px solid #E8E8E8;
 }
 
+.card__carousel .pagination-left,
+.card__carousel .pagination-right {
+  cursor: pointer;
+  z-index: 1;
+}
 .card__carousel .pagination-left {
   left: 10px;
 }
 .card__carousel .pagination-right {
   right: 10px;
 }
-.card__carousel .card__imgs {
+.card__carousel .carousel {
   overflow: hidden;
+  border-radius: 5px;
+}
+.card__carousel .card__imgs {
   max-width: 540px;
   max-height: 406px;
 }
 .card__carousel .navigations {
   bottom: 10px;
+  z-index: 1;
 }
 .card__carousel .navigations .navigation-radio {
+  cursor: pointer;
   accent-color: black;
 }
 
@@ -1360,7 +1370,8 @@ body {
 .card__info .title {
   line-height: 33px;
 }
-.card__info .category, .card__info .mrt {
+.card__info .category,
+.card__info .mrt {
   display: inline-block;
 }
 .card__info .time-radio {
@@ -1372,7 +1383,7 @@ body {
 .horizontal-line {
   border: none;
   border-bottom: 1px solid;
-  border-color: #E8E8E8;
+  border-color: #e8e8e8;
 }
 
 .attraction__infors {
@@ -1411,12 +1422,17 @@ body {
   .attraction__card {
     flex-direction: column;
     padding-top: 0;
+    padding-right: 10px;
+    padding-left: 10px;
   }
   .attraction__card .card__carousel {
     margin-right: 0;
     margin-bottom: 20px;
-    margin-left: -12px;
-    margin-right: -12px;
+    margin-left: -10px;
+    margin-right: -10px;
+  }
+  .attraction__card .card__carousel .carousel {
+    border-radius: 0;
   }
   .attraction__card .card__carousel .card__imgs {
     max-width: 100%;

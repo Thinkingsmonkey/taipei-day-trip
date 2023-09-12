@@ -2,7 +2,6 @@ const options = {
   root: null,
   threshold: 0.5,
 };
-
 const observer = new IntersectionObserver(handleIntersection, options);
 const debouncedFetchData = debounced(getAttractions, 300);
 

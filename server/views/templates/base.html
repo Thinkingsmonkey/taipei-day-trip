@@ -43,6 +43,11 @@
     {% block banner %} {% endblock %}
     {% block main %} {% endblock %}
     {% block footer %} {% endblock %}
+
+    
+    <script src="{{ url_for('static', filename='js/variables.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/createElement.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/fetchData.js') }}"></script>
     {% block javascript %} {% endblock %}
   </body>
 </html>

@@ -14,12 +14,12 @@ block main %}
           class="pagination-right poa vertical-center"
         />
         <div class="navigations poa w-100 text-center">
-          <input type="radio" class="navigation-radio" name="navigation" />
-          <input type="radio" class="navigation-radio" name="navigation" />
-          <input type="radio" class="navigation-radio" name="navigation" />
+
         </div>
-        <div class="card__imgs d-flex">
-          
+        <div class="carousel h-100">
+          <ul class="card__imgs d-flex h-100">
+            
+          </ul>
         </div>
       </div>
       <div class="card__info shrink-0 text-gray-70 grow-1">
@@ -36,7 +36,7 @@ block main %}
           </p>
           <div class="card__date d-flex mb-15px por">
             <h3 class="por vertical-center mr-5px">選擇日期：</h3>
-            <input class="date__option" type="date" />
+            <input class="date__option" type="date"  />
           </div>
           <div class="card__time d-flex align-items-center mb-15px">
             <h3 class="mr-d625">選擇時間：</h3>
@@ -81,12 +81,14 @@ block main %}
     </div>
   </div>
 </main>
-{% endblock %} {% block footer %}
+{% endblock %}
+
+{% block footer %}
 <footer class="bg-gray-50 text-center py-2d5 w-100 poa">
   <p class="text-white">COPYRIGHT © 2023 台北一日遊</p>
 </footer>
-{% endblock %} {% block javascript %}
-<script src="{{ url_for('static', filename='js/variables.js') }}"></script>
-<script src="{{ url_for('static', filename='js/attractionPage.js') }}"></script>
+{% endblock %}
 
+{% block javascript %}
+<script src="{{ url_for('static', filename='js/attraction/attractionPage.js') }}"></script>
 {%endblock %}
