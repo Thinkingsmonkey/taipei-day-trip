@@ -2,7 +2,7 @@
 block main %}
 <main class="attraction__main">
   <div class="container">
-    <div class="card attraction__card d-flex pt-2d5 px-15px pb-2d5 ">
+    <div class="card attraction__card d-flex pt-2d5 px-15px pb-2d5">
       <div class="card__carousel por mr-1d875">
         <img
           src="{{ url_for('static', filename='img/left_btn.png') }}"
@@ -18,62 +18,75 @@ block main %}
           <input type="radio" class="navigation-radio" name="navigation" />
           <input type="radio" class="navigation-radio" name="navigation" />
         </div>
-        <img
-          class="w-100 h-100 object-fit-cover "
-          src="{{ url_for('static', filename='img/attraction_test.png') }}"
-          alt="attraction"
-        />
+        <div class="card__imgs d-flex">
+          
+        </div>
       </div>
-      <div class="card__info text-gray-70 grow-1">
+      <div class="card__info shrink-0 text-gray-70 grow-1">
         <div class="card__title mb-1d25">
-          <h3 class="title mb-15px fz-24">平安鐘</h3>
-          <span class="category fw-5 text-height">公共藝術</span>
+          <h3 class="title mb-15px fz-24"></h3>
+          <span class="category fw-5 text-height"></span>
           <span>at</span>
-          <span class="mrt fw-5 text-height">忠孝復興</span>
+          <span class="mrt fw-5 text-height"></span>
         </div>
         <div class="card__body pt-15px px-1d25 pb-2d5 bg-gray-20">
           <h3 class="mb-15px text-height">訂購導覽行程</h3>
-          <p class="mb-15px fw-5 card__description">以此景點為中心的一日行程，帶您探索城市角落故事</p>
+          <p class="mb-15px fw-5 card__description">
+            以此景點為中心的一日行程，帶您探索城市角落故事
+          </p>
           <div class="card__date d-flex mb-15px por">
             <h3 class="por vertical-center mr-5px">選擇日期：</h3>
             <input class="date__option" type="date" />
           </div>
-          <div class="card__time d-flex mb-15px">
-            <h3 class="vertical-center mr-d625">選擇時間：</h3>
-            <input class="time-radio mr-d25" type="radio" name="time" value="morning" /><span class="vertical-center mr-1d125 fw-5">上半天</span
-            ><input class="time-radio mr-d25" type="radio" name="time" value="aftermoon" /><span class="vertical-center fw-5">下半天</span>
+          <div class="card__time d-flex align-items-center mb-15px">
+            <h3 class="mr-d625">選擇時間：</h3>
+            <input
+              class="time-radio mr-d25"
+              type="radio"
+              name="time"
+              value="morning"
+            /><span class="mr-1d125 fw-5">上半天</span
+            ><input
+              class="time-radio mr-d25"
+              type="radio"
+              name="time"
+              value="aftermoon"
+            /><span class="fw-5">下半天</span>
           </div>
           <div class="card__price d-flex mb-25px">
-            <h3 class=" text-height">導覽費用：</h3>
-            <span class="fw-5 text-height">新台幣 2000 元</span>
+            <h3 class="text-height">導覽費用：</h3>
+            <span class="attraction__price fw-5 text-height"
+              >新台幣 2000 元</span
+            >
           </div>
-          <button class="card__button py-d25 px-1d25 bg-primary text-white fz-19">開始預約行程</button>
+          <button
+            class="card__button py-d25 px-1d25 bg-primary text-white fz-19"
+          >
+            開始預約行程
+          </button>
         </div>
       </div>
     </div>
-    <hr class="horizontal-line">
+    <hr class="horizontal-line" />
     <div class="attraction__infors text-gray-70 pt-3d125 pb-5">
-      <p class="infors__description mb-1d25">平安鐘祈求大家的平安，這是為了紀念921地震週年的設計，在喧鬧的廣場上每個小時鳴鐘，保佑平安，祈禱臺灣不會再發生這樣的天災。雙手合十加上108個黃色的琉璃乳丁，隨著緩緩流下的水，在底下的一個小噴泉噴出。雙手合十的意義，一個是祈福，一個是包容，教我們要包容這樣的改變，撫平這樣的傷口。下面的水緩緩流出，代表著人的生命力是不斷地延續下去。緩緩地鐘聲，卻帶來心中的寧靜。 這個平安鐘是由建築師姚仁喜與琉璃創作家王俠軍共同設計，長6公尺、寬5公尺，以鑄銅製成，由法鼓山文教基金會全額出資。平安鐘點綴都市景觀，不時提醒大家，面對刻骨銘心的災難痛苦，更應該有謙卑的一顆心。</p>
-      <div class="info__address mb-1d25">
+      <p class="infors__description mb-1d25"></p>
+      <div class="mb-1d25">
         <h3 class="infors__title">景點地址：</h3>
-        <p>臺北市 大安區忠孝東路4段</p>
+        <p class="infos__address"></p>
       </div>
-      <div class="info__transport">
+      <div>
         <h3 class="infors__title">交通方式：</h3>
-        <p>捷運站名：忠孝復興站4號出口1.公車：204、212、212直、232、232副、262、262(區間)、278、299、521、605、605(副)、605(新台五線)、667、903、忠孝新幹線至頂好市場站 2.車位：太平洋崇光百貨地下停車場或市民大道附近地下停車場</p>
+        <p class="infos__transport"></p>
       </div>
     </div>
   </div>
 </main>
-{% endblock %}
+{% endblock %} {% block footer %}
+<footer class="bg-gray-50 text-center py-2d5 w-100 poa">
+  <p class="text-white">COPYRIGHT © 2023 台北一日遊</p>
+</footer>
+{% endblock %} {% block javascript %}
+<script src="{{ url_for('static', filename='js/variables.js') }}"></script>
+<script src="{{ url_for('static', filename='js/attractionPage.js') }}"></script>
 
-{% block footer %} 
-<footer class="bg-gray-50 text-center py-2d5 w-100 poa"><p class="text-white">COPYRIGHT © 2023 台北一日遊</p></footer>
-{% endblock %} {% block javascript %} {%
-endblock %}
-
-<!-- 
-  {{ url_for('static', filename='img/attraction_test.png') }}
-{{ url_for('static', filename='img/right_arrow.png') }}
-{{ url_for('static', filename='img/left_arrow.png') }}
--->
+{%endblock %}

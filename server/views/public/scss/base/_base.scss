@@ -12,11 +12,6 @@ li {
 a {
   text-decoration: none;
 }
-img {
-  max-width: 100%;
-  height: auto;
-  vertical-align: middle;
-}
 
 // layout
 .container {
@@ -80,5 +75,9 @@ img {
 }
 .grow-1 {
   flex-grow: 1;
+}
+
+.shrink-0{
+  flex-shrink: 0;
 }
 //

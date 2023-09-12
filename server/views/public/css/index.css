@@ -1175,12 +1175,6 @@ a {
   text-decoration: none;
 }
 
-img {
-  max-width: 100%;
-  height: auto;
-  vertical-align: middle;
-}
-
 .container {
   max-width: 1200px;
   margin-left: auto;
@@ -1252,6 +1246,10 @@ img {
 
 .grow-1 {
   flex-grow: 1;
+}
+
+.shrink-0 {
+  flex-shrink: 0;
 }
 
 .card {
@@ -1330,6 +1328,11 @@ body {
 }
 .card__carousel .pagination-right {
   right: 10px;
+}
+.card__carousel .card__imgs {
+  overflow: hidden;
+  max-width: 540px;
+  max-height: 406px;
 }
 .card__carousel .navigations {
   bottom: 10px;
@@ -1414,6 +1417,10 @@ body {
     margin-bottom: 20px;
     margin-left: -12px;
     margin-right: -12px;
+  }
+  .attraction__card .card__carousel .card__imgs {
+    max-width: 100%;
+    max-height: 305px;
   }
 }
 @media (max-width: 630px) {

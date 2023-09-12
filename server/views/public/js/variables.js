@@ -6,6 +6,9 @@ const mrtList = document.querySelector(".mrt-list");
 const leftArrow = document.querySelector('.left-arrow');
 const rightArrow = document.querySelector('.right-arrow');
 const cardList = document.querySelector(".card_list");
+const morning = document.querySelector('input[value="morning"]')
+const aftermoon = document.querySelector('input[value="aftermoon"]')
+const attractionPrice = document.querySelector('.attraction__price')
 let nextPage = null;
 let keyword = "";
 
@@ -16,10 +19,9 @@ const setParameter = (newNextPage, newKeyword = "") => {
 }
 
 // fetch function
-async function getAttractions(page = 0, keyword = "") {
-  url = "http://54.65.247.64:3000/api/attractions";
+async function getFetch (url) {
   try {
-    const response = await fetch(url + `?page=${page}&keyword=${keyword}`);
+    const response = await fetch(url);
     if (response.ok !== true)
       throw new Error(`data fetch not successed, ${response.status}`);
     const data = await response.json();
@@ -29,17 +31,19 @@ async function getAttractions(page = 0, keyword = "") {
   }
 }
 
+async function getAttractions(page = 0, keyword = "") {
+  url = "http://54.65.247.64:3000/api/attractions"  + `?page=${page}&keyword=${keyword}`;
+  return getFetch(url)
+}
+
 async function getMrts() {
   url = "http://54.65.247.64:3000/api/mrts";
-  try {
-    const response = await fetch(url);
-    if (response.ok !== true)
-      throw Error(`data fetch not successed, ${response.status}`);
-    const data = await response.json();
-    return data;
-  } catch (error) {
-    return error;
-  }
+  return getFetch(url)
+}
+
+async function getAttraction(id) {
+  url = "http://54.65.247.64:3000/api/attraction/" + `${id}`;
+  return getFetch(url)
 }
 
 // create function
@@ -121,6 +125,20 @@ const createFooter = (data) => {
   return footer;
 };
 
+
+const createImage = (src) => {
+
+  // const imageLi = document.createElement('li');
+  // imageLi.classList.add("shrink-0", "w-100")
+  const image = document.createElement('img');
+  image.classList.add("w-100", "object-fit-cover", "shrink-0");
+  image.setAttribute("src", src);
+  image.setAttribute("alt", "attraction");
+  // imageLi.appendChild(image)
+  return image
+}
+
+
 const appendCard = (data, cardList) => {
   data.data.forEach((data) => {
     const cardData = {
@@ -128,8 +146,12 @@ const appendCard = (data, cardList) => {
       name: data.name,
       mrt: data.mrt,
       category: data.category,
+      id: data.id,
     };
     const card = createCard(cardData);
+    card.addEventListener('click', () => {
+      window.location.href = "/attraction/" + `${data.id}`;
+    })
     cardList.appendChild(card);
   });
 };

@@ -3,7 +3,7 @@ const search = async () => {
   const footer = document.querySelector("footer");
   cardList.innerHTML = '';
   setParameter(data.nextPage, searchInput.value)
-  if (typeof data === "string") {
+  if (typeof data.message === "string") {
     const text = document.createElement("p");
     text.classList.add("w-100", "text-center")
     text.textContent = "找無資料";

@@ -10,6 +10,11 @@
   .pagination-right{
     right: 10px;
   }
+  .card__imgs{
+    overflow: hidden;
+    max-width: 540px;
+    max-height: 406px;
+  }
   .navigations {
     bottom: 10px;
     .navigation-radio{
