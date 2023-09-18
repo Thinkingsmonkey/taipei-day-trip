@@ -16,3 +16,35 @@
     vertical-align: bottom;
   }
 }
+
+.member__card {
+  max-width: 340px;
+  top: 80px;
+  z-index: 2;
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 10px; /* 边框高度 */
+    background: linear-gradient(to right, #66aabb, #337788);
+  }
+  .member__close{
+    right: -7px;
+    top: -7px;
+  }
+  .member__button {
+    line-height: 1.5;
+  }
+}
+
+.card__cover {
+  top: 0;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  z-index: 1;
+  background-color: #000;
+  opacity: .25;
+}

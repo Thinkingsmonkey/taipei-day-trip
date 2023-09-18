@@ -12,6 +12,11 @@ $position_place: (
   100: 100%
 );
 
+$border: (
+  1px: 1px,
+  5px: 5px,
+  6px: 6px
+);
 
 $space: (
   d25: .25rem,
@@ -37,6 +42,7 @@ $font-size: (
   28: 28px,
   24: 24px,
   19: 19px,
+  17: 17px,
   16: 16px
 );
 $font-weight: (
@@ -53,6 +59,7 @@ $primary: #489;
 $gray-20: #E8E8E8;
 $color: (
   primary: $primary,
+  gray-90: #cccccc,
   gray-50: #757575,
   gray-70: #666666,
   gray-20: $gray-20,

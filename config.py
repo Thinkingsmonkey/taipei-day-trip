@@ -1,4 +1,5 @@
 import os
+import datetime
 
 class Config():
   # JSON_SORT_KEYS = False
@@ -7,3 +8,7 @@ class Config():
   SQLALCHEMY_DATABASE_URI = "mysql://root:12345678@localhost/taipeiattractions"  # 開發環境使用
   SQLALCHEMY_TRACK_MODIFICATIONS = False
   ERROR_404_HELP = False
+
+  JWT_SECRET_KEY = "this secret key" # 開發環境使用
+  JWT_ACCESS_TOKEN_EXPIRES = datetime.timedelta(days=7)
+  JWT_TOKEN_LOCATION = ["headers", "cookies"]  

@@ -28,6 +28,15 @@ a {
 .object-fit-cover {
   object-fit: cover;
 }
+.hidden {
+  overflow: hidden;
+}
+
+
+// dispaly
+.d-none {
+  display: none;
+}
 
 // position
 .poa {
@@ -35,6 +44,9 @@ a {
 }
 .por {
   position: relative;
+}
+.pof {
+  position: fixed;
 }
 
 // 置中

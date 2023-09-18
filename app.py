@@ -29,6 +29,26 @@ def thankyou():
 	return render_template("thankyou.html")
 
 
+# response token with member id
+@jwt.user_identity_loader
+def user_identity_lookup(member):
+		return member.id
+
+
+# jwt token error handle
+@jwt.expired_token_loader
+def my_expired_token_callback(jwt_header, jwt_payload):
+    return jsonify({"error": True, "message": "Token has expired"}), 401
+
+@jwt.invalid_token_loader
+def my_invalid_token_callback(jwt_payload):
+    return jsonify({"data": None}), 200
+
+@jwt.unauthorized_loader
+def my_unauthorized_callback(reason):
+    return jsonify({"data": None}), 200
+
+
 api.init_app(app)
 api.add_namespace(attraction_space)
 api.add_namespace(mrt_space)

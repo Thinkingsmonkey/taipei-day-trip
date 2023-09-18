@@ -12,6 +12,25 @@
   }
 }
 
+// border-radius
+@each $name, $size in $border {
+  .rounded-#{$name} {
+    border-radius: $size;
+  }
+}
+// border-size
+@each $name, $size in $border {
+  .border-#{$name} {
+    border: $size solid;
+  }
+}
+
+// border-color
+@each $name, $size in $color {
+  .border-#{$name} {
+    border-color: $size;
+  }
+}
 
 // width height
 @each $name, $place in $position_place {
