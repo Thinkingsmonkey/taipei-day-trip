@@ -1339,7 +1339,6 @@ body {
   border-radius: 5px;
 }
 .card__carousel .card__imgs {
-  max-width: 540px;
   max-height: 406px;
 }
 .card__carousel .navigations {
@@ -1435,7 +1434,6 @@ body {
     border-radius: 0;
   }
   .attraction__card .card__carousel .card__imgs {
-    max-width: 100%;
     max-height: 305px;
   }
 }

@@ -1,5 +1,4 @@
-
-
+// index.html fetch variables
 let nextPage = null;
 let keyword = "";
 
@@ -23,16 +22,19 @@ async function getFetch (url) {
 }
 
 async function getAttractions(page = 0, keyword = "") {
-  url = "http://54.65.247.64:3000/api/attractions"  + `?page=${page}&keyword=${keyword}`;
+  // const url = "http://54.65.247.64:3000/api/attractions"  + `?page=${page}&keyword=${keyword}`;  // 部署
+  const url = "/api/attractions"  + `?page=${page}&keyword=${keyword}`;
   return getFetch(url)
 }
 
 async function getMrts() {
-  url = "http://54.65.247.64:3000/api/mrts";
+  // const url = "http://54.65.247.64:3000/api/mrts"; // 部署
+  const url = "/api/mrts";
   return getFetch(url)
 }
 
 async function getAttractionById(id) {
-  url = "http://54.65.247.64:3000/api/attraction/" + `${id}`;
+  // const url = "http://54.65.247.64:3000/api/attraction/" + `${id}`; // 部署
+  const url = "/api/attraction/" + `${id}`;
   return getFetch(url)
 }
