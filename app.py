@@ -1,14 +1,16 @@
 from flask import *
-from server.extensions import db, api
+from server.extensions import db, api, jwt
 from flask_cors import CORS
 from server.routes.attractions.attractions_view import attraction_space 
 from server.routes.mrt.mrt_view import mrt_space
+from server.routes.member.member_controller import member_spance
 from config import Config
 app=Flask(__name__, static_folder="server/views/public")
 app.template_folder = "server/views/templates"
 
 app.config.from_object(Config)
 db.init_app(app)
+jwt.init_app(app)
 CORS(app)
 
 
@@ -30,5 +32,6 @@ def thankyou():
 api.init_app(app)
 api.add_namespace(attraction_space)
 api.add_namespace(mrt_space)
+api.add_namespace(member_spance)
 app.run(host="0.0.0.0", port=3000, debug=True) # 開發環境使用
 # app.run(host="0.0.0.0", port=3000) # 部署環境使用
