@@ -8,7 +8,7 @@ class Config():
   SQLALCHEMY_TRACK_MODIFICATIONS = False
   ERROR_404_HELP = False
 
+  JWT_SECRET_KEY = os.environ.get('JWT_SECRET_KEY') # 部署環境使用
   # JWT_SECRET_KEY = "this secret key" # 開發環境使用
-  JWT_SECRET_KEY = os.environ.get('JWT_SECRET_KEY') # 開發環境使用
   JWT_ACCESS_TOKEN_EXPIRES = datetime.timedelta(days=7)
   JWT_TOKEN_LOCATION = ["headers", "cookies"]  
