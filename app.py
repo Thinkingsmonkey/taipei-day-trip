@@ -51,7 +51,12 @@ def create_app():
 	@jwt.unauthorized_loader
 	def my_unauthorized_callback(reason):
 			return jsonify({"data": None, "message": "Unauthorized"}), 200
-
+	
+	@jwt.token_verification_failed_loader
+	def custom_error(jwt_header, jwt_data):
+			assert jwt_header["alg"] == "HS256"
+			assert jwt_data["sub"] == "username"
+			return jsonify(msg="claims failed for {}".format(jwt_data["sub"])), 404
 
 	api.init_app(app)
 	api.add_namespace(attraction_space)
