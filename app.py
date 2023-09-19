@@ -40,6 +40,10 @@ def create_app():
 
 
 	# jwt token error handle
+	@jwt.unauthorized_loader
+	def my_unauthorized_callback(reason):
+			return jsonify({"data": None, "message": "Unauthorized"}), 200
+	
 	@jwt.expired_token_loader
 	def my_expired_token_callback(jwt_header, jwt_payload):
 			return jsonify({"error": True, "message": "Token has expired"}), 401
@@ -48,9 +52,7 @@ def create_app():
 	def my_invalid_token_callback(jwt_payload):
 			return jsonify({"data": None, "message": "Invalid token"}), 200
 
-	@jwt.unauthorized_loader
-	def my_unauthorized_callback(reason):
-			return jsonify({"data": None, "message": "Unauthorized"}), 200
+
 	
 	@jwt.token_verification_failed_loader
 	def custom_error(jwt_header, jwt_data):

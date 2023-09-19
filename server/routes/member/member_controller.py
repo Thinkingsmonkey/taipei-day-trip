@@ -31,9 +31,24 @@ class MemberSignUp(Resource):
 
 @member_spance.route("/user/auth")
 class Member(Resource):
+
+  @jwt_required()
+  @member_spance.marshal_with(member_check_output_model)
+  @member_spance.doc(security='Bearer')
+  def get(self):
+    # """取得當前登入的會員"""
+    claims = get_jwt()
+    data = {
+      "id": claims["id"],
+      "name": claims["name"],
+      "email": claims["email"]
+    }
+    return {"data":data}
+
+
   @member_spance.expect(member_signin_input_model)
   def put(self):
-    """登入會員帳戶"""
+    # """登入會員帳戶"""
     member = get_member_by_email(member_spance.payload["email"])
     if not member:
       abort(400, "Email not exist")
@@ -45,16 +60,5 @@ class Member(Resource):
     return jsonify({"token": access_token})
   
 
-  @jwt_required()
-  @member_spance.marshal_with(member_check_output_model)
-  @member_spance.doc(security='Bearer')
-  def get(self):
-    """取得當前登入的會員"""
-    claims = get_jwt()
-    data = {
-      "id": claims["id"],
-      "name": claims["name"],
-      "email": claims["email"]
-    }
-    return {"data":data}
+  
 
