@@ -17,7 +17,7 @@ class MemberSignUp(Resource):
     email = member_spance.payload["email"]
     member = get_member_by_email(email)
     if member :
-      abort(401, "Email has been used", error=True)
+      abort(400, "Email has been used", error=True)
 
     new_member_data = {
       "name": member_spance.payload["name"],

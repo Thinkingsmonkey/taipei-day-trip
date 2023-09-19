@@ -42,16 +42,17 @@ def my_expired_token_callback(jwt_header, jwt_payload):
 
 @jwt.invalid_token_loader
 def my_invalid_token_callback(jwt_payload):
-    return jsonify({"data": None}), 200
+    return jsonify({"data": None, "message": "Invalid token"}), 200
 
 @jwt.unauthorized_loader
 def my_unauthorized_callback(reason):
-    return jsonify({"data": None}), 200
+    return jsonify({"data": None, "message": "Unauthorized"}), 200
 
 
 api.init_app(app)
 api.add_namespace(attraction_space)
 api.add_namespace(mrt_space)
 api.add_namespace(member_spance)
-app.run(host="0.0.0.0", port=3000, debug=True) # 開發環境使用
-# app.run(host="0.0.0.0", port=3000) # 部署環境使用
+if __name__ == "__main__":
+	app.run(host="0.0.0.0",port=3000, debug=True) # 開發環境使用
+# 部署環境使用，使用 gunicorn 開 3000

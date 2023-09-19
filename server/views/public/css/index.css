@@ -51,6 +51,10 @@
   border-color: white;
 }
 
+.border-red {
+  border-color: red;
+}
+
 .bottom-0 {
   bottom: 0;
 }
@@ -169,6 +173,14 @@
 
 .bg-white {
   background-color: white;
+}
+
+.text-red {
+  color: red;
+}
+
+.bg-red {
+  background-color: red;
 }
 
 .fz-30 {
