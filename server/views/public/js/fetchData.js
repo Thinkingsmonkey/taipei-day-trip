@@ -1,7 +1,8 @@
 // index.html fetch variables
 let nextPage = null;
 let keyword = "";
-const SERVER_URL = "http://13.113.8.196:3000" // 部署
+const SERVER_URL = "https://flask-react.to-do-app.com/" // 部署 https 彈性 IP
+// const SERVER_URL = "http://13.113.8.196:3000" // 部署
 // const SERVER_URL = ""; // 開發
 
 // set Page、keyword
@@ -40,12 +41,16 @@ function getAttractionById(id) {
 }
 function checkMemberInfor() {
   const url = SERVER_URL +  "/api/user/auth";
+  const token = localStorage.getItem("token");
+  const headers = {
+    "Content-type": "application/json"
+  };
+  if (token) {
+    headers['Authorization'] = `Bearer ${token}`;
+  }
   const option = {
     method: "GET",
-    headers: {
-      "Content-type": "application/json",
-      Authorization: `Bearer ${localStorage.getItem("token")}`,
-    },
+    headers: headers
   };
   return getFetch(url, option);
 }
