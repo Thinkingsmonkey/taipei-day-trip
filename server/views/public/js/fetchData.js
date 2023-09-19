@@ -1,7 +1,7 @@
 // index.html fetch variables
 let nextPage = null;
 let keyword = "";
-const SERVER_URL = "https://flask-react.to-do-app.com/" // 部署 https 彈性 IP
+const SERVER_URL = "https://flask-react.to-do-app.com" // 部署 https 彈性 IP
 // const SERVER_URL = "http://13.113.8.196:3000" // 部署
 // const SERVER_URL = ""; // 開發
 
