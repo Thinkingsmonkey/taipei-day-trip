@@ -17,6 +17,7 @@ def create_app():
 	jwt.init_app(app)
 	CORS(app)
 
+	app.config['PROPAGATE_EXCEPTIONS'] = True
 
 	# Pages
 	@app.route("/")
