@@ -29,3 +29,10 @@ class AttractionImg(db.Model):
     id = db.Column(db.Integer, primary_key=True,  autoincrement=True)
     img = db.Column(db.String(255), nullable=False)
     attraction_id = db.Column(db.Integer, nullable=False)
+
+class Member(db.Model):
+    id = db.Column(db.Integer, primary_key=True,  autoincrement=True)
+    name = db.Column(db.String(255))
+    email = db.Column(db.String(255), unique=True)
+    salt = db.Column(db.String(255), nullable=False)
+    password_hash = db.Column(db.String(500), nullable=False)

@@ -18,7 +18,7 @@
   </head>
   <body>
 
-    <header>
+    <header class="hidden">
       <nav>
         <div class="container py-d625">
           <ul class="d-flex justify-content-between">
@@ -31,14 +31,27 @@
               <li>
                 <p>預定行程</p>
               </li>
-              <li>
-                <p>登入/註冊</p>
+              <li class="sign-btn cursor-pointer">
+                <p></p>
               </li>
             </ul>
           </ul>
         </div>
       </nav>
-    
+      <div class="sign-form container text-center d-none">
+        <div class="member__card d-flex d-flex-column horizontal-center pof p-15px pt-25px bg-white rounded-6px hidden">
+          <div class="member__header mb-15px por">
+            <span class="member__title fz-24 fw-7 text-gray-70">登入會員帳號</span>
+            <img class="member__close poa cursor-pointer" src="{{ url_for('static', filename='img/close.png') }}" alt="">
+          </div>
+          <input type="text" class="member__input mb-d625 rounded-5px p-15px fw-5 border-1px border-gray-90  fz-17 d-none " placeholder="輸入姓名" ><input type="text" class="member__input mb-d625 rounded-5px p-15px fw-5 border-1px border-gray-90 fz-17" placeholder="輸入電子信箱" >
+          <input type="password" class="member__input mb-d625 rounded-5px p-15px fw-5 border-1px border-gray-90 fz-17" placeholder="輸入密碼" >
+          <div class="member__button mb-d625 bg-primary py-d625 text-white fz-19 rounded-5px cursor-pointer login">登入帳戶</div>
+          <p class="error-message"></p>
+          <div class="member__navigation text-gray-70"><span>還沒有帳戶？</span><span class="navigation__link cursor-pointer">點此註冊</span></div>
+        </div>
+        <div class="card__cover pof"></div>
+      </div>
     </header>
     {% block banner %} {% endblock %}
     {% block main %} {% endblock %}
@@ -46,6 +59,10 @@
 
     
     <script src="{{ url_for('static', filename='js/variables.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/member/memberView.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/member/memberModel.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/member/memberController.js') }}"></script>
+
     <script src="{{ url_for('static', filename='js/createElement.js') }}"></script>
     <script src="{{ url_for('static', filename='js/fetchData.js') }}"></script>
     {% block javascript %} {% endblock %}

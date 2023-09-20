@@ -1,9 +1,16 @@
-{% extends "base.html" %} {% block head %} 台北一日遊-景點 {% endblock%} {%
-block main %}
+{% extends "base.html" %}
+
+
+{% block head %} 
+台北一日遊-景點 
+{% endblock%} 
+
+
+{% block main %}
 <main class="attraction__main">
   <div class="container">
     <div class="card attraction__card d-flex pt-2d5 px-15px pb-2d5">
-      <div class="card__carousel por mr-1d875">
+      <div class="card__carousel por mr-1d875 grow-1">
         <img
           src="{{ url_for('static', filename='img/left_btn.png') }}"
           alt=""
@@ -22,7 +29,7 @@ block main %}
           </ul>
         </div>
       </div>
-      <div class="card__info shrink-0 text-gray-70 grow-1">
+      <div class="card__info shrink-0 text-gray-70 ">
         <div class="card__title mb-1d25">
           <h3 class="title mb-15px fz-24"></h3>
           <span class="category fw-5 text-height"></span>
@@ -83,11 +90,13 @@ block main %}
 </main>
 {% endblock %}
 
+
 {% block footer %}
 <footer class="bg-gray-50 text-center py-2d5 w-100 poa">
   <p class="text-white">COPYRIGHT © 2023 台北一日遊</p>
 </footer>
 {% endblock %}
+
 
 {% block javascript %}
 <script src="{{ url_for('static', filename='js/attraction/attractionPage.js') }}"></script>

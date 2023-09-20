@@ -22,7 +22,6 @@ def get_attraction_by_id(attractionId):
 
     # img
     imgs = AttractionImg.query.filter_by(attraction_id = attractionId).all()
-    print(imgs)
     data["images"] = []
     for img in imgs:
         data["images"].append(img.img)
