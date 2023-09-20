@@ -22,7 +22,7 @@ class MemberSignUp(Resource):
     new_member_data = {
       "name": member_spance.payload["name"],
       "email": member_spance.payload["email"],
-      "password": member_spance.payload["password"],
+      "password": member_spance.payload["password"], 
     }
     new_member = create_member(new_member_data)
     signup(new_member)
