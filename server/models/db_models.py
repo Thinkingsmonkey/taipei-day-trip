@@ -52,4 +52,3 @@ class Booking(db.Model):
     member = db.relationship("Member", back_populates="bookings")
     attraction = db.relationship("Attraction", back_populates="bookings")
     __table_args__ = (UniqueConstraint('attraction_id', 'date', 'time', name='unique_attraction_date_time'),)
-    
