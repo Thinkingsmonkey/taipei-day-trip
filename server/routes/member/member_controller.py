@@ -2,6 +2,7 @@ from flask import jsonify
 from flask_restx import Resource, Namespace, abort
 from .member_model import *
 from .member_view import *
+from werkzeug.security import check_password_hash
 from flask_jwt_extended import create_access_token
 from flask_jwt_extended import jwt_required
 from flask_jwt_extended import get_jwt

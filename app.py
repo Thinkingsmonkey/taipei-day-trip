@@ -4,6 +4,7 @@ from flask_cors import CORS
 from server.routes.attractions.attractions_view import attraction_space 
 from server.routes.mrt.mrt_view import mrt_space
 from server.routes.member.member_controller import member_spance
+from server.routes.booking.booking_controller import booking_space
 from config import Config
 
 
@@ -65,6 +66,7 @@ def create_app():
 	api.add_namespace(attraction_space)
 	api.add_namespace(mrt_space)
 	api.add_namespace(member_spance)
+	api.add_namespace(booking_space)
 
 	return app
 
