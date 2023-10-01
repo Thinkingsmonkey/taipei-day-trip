@@ -203,7 +203,7 @@ window.addEventListener("DOMContentLoaded", async () => {
   createAttractionCarousel(data);
 });
 
-aftermoon.addEventListener("click", () => {
+afternoon.addEventListener("click", () => {
   attractionPrice.textContent = "新台幣 2500 元";
 });
 

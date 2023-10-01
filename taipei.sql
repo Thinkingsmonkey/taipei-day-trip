@@ -1,5 +1,7 @@
-CREATE DATABASE  taipeiAttractions;
+show databases;
 USE taipeiAttractions;
+
+-- CREATE DATABASE  taipeiAttractions;
 -- DROP TABLE attraction;
 -- DROP TABLE attractionImg;
 
@@ -21,6 +23,7 @@ INSERT INTO attraction(rate, direction, name, date,
  POI, file, idpt, latitude, description, _id,
  avEnd, address) values();
 
+show create table attractionImg;
 SELECT * FROM attractionImg;
 CREATE TABLE attractionImg(
 	id INT PRIMARY KEY AUTO_INCREMENT,
@@ -63,4 +66,17 @@ CREATE TABLE member(
     email VARCHAR(255) UNIQUE,
     salt VARCHAR(255) NOT NULL,
     password_hash VARCHAR(500) NOT NULL
+);
+SELECT * FROM booking;
+-- drop table booking;
+CREATE TABLE booking(
+	id INT PRIMARY KEY AUTO_INCREMENT,
+    attraction_id INT NOT NULL,
+    member_id INT NOT NULL,
+    date DATE,
+    time ENUM('afternoon', 'morning'),
+    price INT NOT NULL,
+    unique(attraction_id, date, time),
+    FOREIGN KEY (attraction_id) REFERENCES attraction(_id) ON DELETE CASCADE,
+    FOREIGN KEY (member_id) REFERENCES member(id) ON DELETE CASCADE
 );

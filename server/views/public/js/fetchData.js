@@ -77,3 +77,42 @@ function signup(data) {
   };
   return getFetch(url, option);
 }
+
+
+function createNewBooking(data) {
+  const url = SERVER_URL +  "/api/booking";
+  const option = {
+    method: "POST",
+    headers: {
+      "Content-type": "application/json",
+      "Authorization": "Bearer " + localStorage.getItem("token") 
+    },
+    body: JSON.stringify(data),
+  };
+  return getFetch(url, option);
+}
+
+function getBookings() {
+  const url = SERVER_URL +  "/api/booking";
+  const option = {
+    method: "GET",
+    headers: {
+      "Content-type": "application/json",
+      "Authorization": "Bearer " + localStorage.getItem("token") 
+    }
+  };
+  return getFetch(url, option);
+}
+
+
+function deleteBooking(id) {
+  const url = SERVER_URL +  "/api/booking" + '/' + id;
+  const option = {
+    method: "DELETE",
+    headers: {
+      "Content-type": "application/json",
+      "Authorization": "Bearer " + localStorage.getItem("token") 
+    }
+  };
+  return getFetch(url, option);
+}

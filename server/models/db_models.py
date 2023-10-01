@@ -1,5 +1,5 @@
 from ..extensions import db
-
+from sqlalchemy.schema import UniqueConstraint
 
 class Attraction(db.Model):
     rate = db.Column(db.Integer)
@@ -22,13 +22,17 @@ class Attraction(db.Model):
     _id = db.Column(db.Integer, primary_key=True)
     avEnd = db.Column(db.String(255))
     address = db.Column(db.String(255))
+    bookings = db.relationship("Booking", back_populates="attraction", cascade="all, delete-orphan")
+    attractionImgs = db.relationship("AttractionImg", back_populates="attraction")
     
 
 class AttractionImg(db.Model):
     __tablename__ = 'attractionImg' # 指定 table name
     id = db.Column(db.Integer, primary_key=True,  autoincrement=True)
     img = db.Column(db.String(255), nullable=False)
-    attraction_id = db.Column(db.Integer, nullable=False)
+    attraction_id = db.Column(db.Integer, db.ForeignKey("attraction._id"), nullable=False)
+    attraction = db.relationship("Attraction", back_populates="attractionImgs")
+
 
 class Member(db.Model):
     id = db.Column(db.Integer, primary_key=True,  autoincrement=True)
@@ -36,3 +40,15 @@ class Member(db.Model):
     email = db.Column(db.String(255), unique=True)
     salt = db.Column(db.String(255), nullable=False)
     password_hash = db.Column(db.String(500), nullable=False)
+    bookings = db.relationship("Booking", back_populates="member", cascade="all, delete-orphan")
+
+class Booking(db.Model):
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    attraction_id = db.Column(db.Integer, db.ForeignKey("attraction._id"), nullable=False)
+    member_id = db.Column(db.Integer, db.ForeignKey("member.id"), nullable=False)
+    date = db.Column(db.Date)
+    time = db.Column(db.Enum("afternoon", "morning"))
+    price = db.Column(db.Integer, nullable=False)
+    member = db.relationship("Member", back_populates="bookings")
+    attraction = db.relationship("Attraction", back_populates="bookings")
+    __table_args__ = (UniqueConstraint('attraction_id', 'date', 'time', name='unique_attraction_date_time'),)

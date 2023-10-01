@@ -2,7 +2,7 @@ from flask_restx import fields
 from ...extensions import api, db
 from ...models.db_models import Member
 
-from werkzeug.security import generate_password_hash, check_password_hash
+from werkzeug.security import generate_password_hash
 import secrets
 
 member_signup_input_model = api.model("MemberSignUp", {
