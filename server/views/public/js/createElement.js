@@ -132,7 +132,6 @@ const createBookingLi = (booking) => {
   
   const createPrice = document.createElement('div');
   createPrice.classList.add('content__price', 'mb-d625');
-  console.log(booking.price);
   createPrice.innerHTML = `<span class="fw-7 mr-5px">費用：</span><span class="fw-5">${booking.price === 2500 ? "新台幣 2500 元" : "新台幣 2000 元"}</span>`;
   
   const createAttraction = document.createElement('div');

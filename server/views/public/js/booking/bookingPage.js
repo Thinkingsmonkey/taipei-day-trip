@@ -13,7 +13,6 @@ async function renderBookingList() {
     bookingMain.lastElementChild.classList.add('mb-2d5', 'px-d625')
     bookingMain.lastElementChild.innerHTML = '目前沒有任何待預定的行程'
     bookingFooter.style.height = 'calc(100vh - 209px)';
-    console.log(bookingFooter.style.height);
     return false
   }
   const bookingList = document.querySelector('.booking__list');
