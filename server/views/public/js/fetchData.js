@@ -1,9 +1,9 @@
 // index.html fetch variables
 let nextPage = null;
 let keyword = "";
-// const SERVER_URL = "https://flask-react.to-do-app.com" // 部署 https 彈性 IP
+const SERVER_URL = "https://flask-react.to-do-app.com" // 部署 https 彈性 IP
 // const SERVER_URL = "http://13.113.8.196:3000" // 部署
-const SERVER_URL = ""; // 開發
+// const SERVER_URL = ""; // 開發
 
 // set Page、keyword
 const setParameter = (newNextPage, newKeyword = "") => {
@@ -74,6 +74,45 @@ function signup(data) {
       "Content-type": "application/json",
     },
     body: JSON.stringify(data),
+  };
+  return getFetch(url, option);
+}
+
+
+function createNewBooking(data) {
+  const url = SERVER_URL +  "/api/booking";
+  const option = {
+    method: "POST",
+    headers: {
+      "Content-type": "application/json",
+      "Authorization": "Bearer " + localStorage.getItem("token") 
+    },
+    body: JSON.stringify(data),
+  };
+  return getFetch(url, option);
+}
+
+function getBookings() {
+  const url = SERVER_URL +  "/api/booking";
+  const option = {
+    method: "GET",
+    headers: {
+      "Content-type": "application/json",
+      "Authorization": "Bearer " + localStorage.getItem("token") 
+    }
+  };
+  return getFetch(url, option);
+}
+
+
+function deleteBooking(id) {
+  const url = SERVER_URL +  "/api/booking" + '/' + id;
+  const option = {
+    method: "DELETE",
+    headers: {
+      "Content-type": "application/json",
+      "Authorization": "Bearer " + localStorage.getItem("token") 
+    }
   };
   return getFetch(url, option);
 }

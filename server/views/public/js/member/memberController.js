@@ -7,15 +7,22 @@ const nameInputs = document.querySelectorAll(".member__input");
 
 
 // 載入前先確認是否登入
-window.addEventListener("DOMContentLoaded", async () => {
+document.addEventListener("DOMContentLoaded", async () => {
   const response = await checkMemberInfor();
+
   if (response.data === null) {
+    if (window.location.pathname.split('/')[1] === "booking") {
+      window.location.href = "/"
+    }
     // 渲染 登入/註冊
     createSignBtn(false);
     return;
   }
   // 渲染 登出按鈕
   createSignBtn(true);
+  // 再有登入的情況下才賦值 name、email
+  memberName = response.data.name
+  memberEmail = response.data.email
 });
 
 // 登入狀態：點登出 清除 localStorage 重新渲染
@@ -26,7 +33,8 @@ signBtn.addEventListener("click", (e) => {
     reloadPage();
     return;
   }
-  memberCard.parentElement.classList.remove("d-none");
+  memberCard.parentElement.style.visibility = 'visible';
+  memberCard.style.top = '80px';
 });
 
 // 登入、註冊跳轉
@@ -40,7 +48,9 @@ signForm.addEventListener("click", (e) => {
     e.target.classList.contains("member__close") ||
     e.target.classList.contains("card__cover")
   ) {
-    memberCard.parentElement.classList.add("d-none");
+    memberCard.parentElement.style.visibility = 'hidden';
+    memberCard.setAttribute('style', 'top: 50px;');
+    changeSignCard(true);
   }
 });
 

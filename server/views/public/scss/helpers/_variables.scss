@@ -13,6 +13,7 @@ $position_place: (
 );
 
 $border: (
+  0: 0px,
   1px: 1px,
   5px: 5px,
   6px: 6px
@@ -25,6 +26,7 @@ $space: (
   1: 1rem,
   1d125: 1.125rem,
   1d25: 1.25rem,
+  1d375: 1.375rem,
   1d875: 1.875rem,
   2d5: 2.5rem,
   3d125: 3.125rem,
@@ -38,12 +40,12 @@ $space: (
 );
 
 $font-size: (
-  30: 30px,
-  28: 28px,
-  24: 24px,
-  19: 19px,
+  16: 16px,
   17: 17px,
-  16: 16px
+  19: 19px,
+  24: 24px,
+  28: 28px,
+  30: 30px,
 );
 $font-weight: (
   5: 500,
@@ -53,7 +55,9 @@ $font-weight: (
 $line-height: (
   1: 1,
   1d5: 1.5,
-);
+  24px: 24px,
+  27px: 27px
+  );
 
 $primary: #489;
 $gray-20: #E8E8E8;

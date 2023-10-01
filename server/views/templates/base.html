@@ -28,7 +28,7 @@
               </a>
             </li>
             <ul class="sitemap d-flex gap-d625 text-gray-70 p-d625 fw-5">
-              <li>
+              <li class="sitemap__booking cursor-pointer">
                 <p>預定行程</p>
               </li>
               <li class="sign-btn cursor-pointer">
@@ -38,7 +38,7 @@
           </ul>
         </div>
       </nav>
-      <div class="sign-form container text-center d-none">
+      <div class="sign-form container text-center">
         <div class="member__card d-flex d-flex-column horizontal-center pof p-15px pt-25px bg-white rounded-6px hidden">
           <div class="member__header mb-15px por">
             <span class="member__title fz-24 fw-7 text-gray-70">登入會員帳號</span>
@@ -59,6 +59,7 @@
 
     
     <script src="{{ url_for('static', filename='js/variables.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/base.js') }}"></script>
     <script src="{{ url_for('static', filename='js/member/memberView.js') }}"></script>
     <script src="{{ url_for('static', filename='js/member/memberModel.js') }}"></script>
     <script src="{{ url_for('static', filename='js/member/memberController.js') }}"></script>

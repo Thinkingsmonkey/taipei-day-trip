@@ -23,6 +23,7 @@ INSERT INTO attraction(rate, direction, name, date,
  POI, file, idpt, latitude, description, _id,
  avEnd, address) values();
 
+show create table attractionImg;
 SELECT * FROM attractionImg;
 CREATE TABLE attractionImg(
 	id INT PRIMARY KEY AUTO_INCREMENT,
@@ -67,7 +68,7 @@ CREATE TABLE member(
     password_hash VARCHAR(500) NOT NULL
 );
 SELECT * FROM booking;
-drop table booking;
+-- drop table booking;
 CREATE TABLE booking(
 	id INT PRIMARY KEY AUTO_INCREMENT,
     attraction_id INT NOT NULL,
@@ -75,7 +76,7 @@ CREATE TABLE booking(
     date DATE,
     time ENUM('afternoon', 'morning'),
     price INT NOT NULL,
-    FOREIGN KEY (attractionId) REFERENCES attraction(_id) ON DELETE CASCADE,
+    unique(attraction_id, date, time),
+    FOREIGN KEY (attraction_id) REFERENCES attraction(_id) ON DELETE CASCADE,
     FOREIGN KEY (member_id) REFERENCES member(id) ON DELETE CASCADE
 );
-

@@ -17,9 +17,15 @@
   }
 }
 
+
+.sign-form{
+  visibility: hidden;
+}
+
 .member__card {
   max-width: 340px;
-  top: 80px;
+  top: 50px;
+  transition: top .3s ease-in-out;
   z-index: 2;
   &::before {
     content: "";

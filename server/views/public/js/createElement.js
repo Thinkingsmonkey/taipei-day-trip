@@ -103,6 +103,69 @@ const createImageLi = (src) => {
   return imageLi
 }
 
+const createBookingLi = (booking) => {
+  const li = document.createElement('li');
+  li.classList.add('booking__infor');
+
+  const inforCard = document.createElement('div');
+  inforCard.classList.add('infor__card', 'd-flex', 'por');
+
+  const attractionImg = document.createElement('img');
+  attractionImg.classList.add('card__img', 'mr-1d875');
+  attractionImg.setAttribute('src', booking.attraction.image);
+  attractionImg.setAttribute('alt', booking.attraction.name);
+
+  const cardContent = document.createElement('div');
+  cardContent.classList.add('card__content', 'lh-1d5');
+
+  const title = document.createElement('h2');
+  title.classList.add('content__title', 'fw-7', 'mb-1d25', 'text-primary');
+  title.textContent = `台北一日遊：${booking.attraction.name}`;
+  
+  const createDate = document.createElement('div');
+  createDate.classList.add('content__date', 'mb-d625');
+  createDate.innerHTML = `<span class="fw-7 mr-5px">日期：</span><span class="fw-5">${booking.date}</span>`;
+  
+  const createTime = document.createElement('div');
+  createTime.classList.add('content__time', 'mb-d625');
+  createTime.innerHTML = `<span class="fw-7 mr-5px">時間：</span><span class="fw-5">${booking.time === "morning" ? "早上 9 點到下午 4 點" : "下午 4 點到晚上 9 點"}</span>`;
+  
+  const createPrice = document.createElement('div');
+  createPrice.classList.add('content__price', 'mb-d625');
+  console.log(booking.price);
+  createPrice.innerHTML = `<span class="fw-7 mr-5px">費用：</span><span class="fw-5">${booking.price === 2500 ? "新台幣 2500 元" : "新台幣 2000 元"}</span>`;
+  
+  const createAttraction = document.createElement('div');
+  createAttraction.classList.add('content__attraction', 'mb-d625');
+  createAttraction.innerHTML = `<span class="fw-7 mr-5px">地點：</span><span class="fw-5">${booking.attraction.address}</span>`;
+  
+  const deleteImg = document.createElement('img');
+  deleteImg.setAttribute('src', '../public/img/delete.png');
+  deleteImg.addEventListener('click', async () => {
+    const result = await deleteBooking(booking.id);
+    renderBookingList()
+  })
+  deleteImg.classList.add('card__delete', 'poa', 'cursor-pointer');
+
+  // 將所有子元件加入至 cardContent
+  cardContent.appendChild(title);
+  cardContent.appendChild(createDate);
+  cardContent.appendChild(createTime);
+  cardContent.appendChild(createPrice);
+  cardContent.appendChild(createAttraction);
+  cardContent.appendChild(deleteImg);
+  
+  // 將 attractionImg 和 cardContent 加入至 inforCard
+  inforCard.appendChild(attractionImg);
+  inforCard.appendChild(cardContent);
+
+  // 最後將 inforCard 加入至 li
+  li.appendChild(inforCard);
+
+  return li;
+}
+
+
 
 const appendCard = (data, cardList) => {
   data.data.forEach((data) => {
@@ -120,3 +183,4 @@ const appendCard = (data, cardList) => {
     cardList.appendChild(card);
   });
 };
+

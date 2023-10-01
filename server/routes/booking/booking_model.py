@@ -3,7 +3,6 @@ from ...extensions import api, db
 from ...models.db_models import Booking, Member
 
 booking_input_model = api.model("BookingInput", {
-    "member_id": fields.Integer,
     "attractionId": fields.Integer,
     "date": fields.Date,
     "time": fields.String,
@@ -18,6 +17,7 @@ booking_attraction_model = api.model("BookingAttraction", {
 })
 
 booking_nest_model = api.model("BookingNest", {
+    'id': fields.Integer,
     'attraction': fields.Nested(booking_attraction_model),
     'date': fields.String,
     'time': fields.String,
@@ -31,10 +31,10 @@ booking_output_model = api.model("Booking", {
 
 
 
-def get_booking_data(name_space):
+def get_booking_data(name_space, member_id):
   return {
     "attraction_id": name_space.payload["attractionId"],
-    "member_id": name_space.payload["member_id"],
+    "member_id": member_id,
     "time": name_space.payload["time"],
     "date": name_space.payload["date"],
     "price": name_space.payload["price"]
@@ -58,6 +58,7 @@ def get_response_data(bookings):
   orders = []
   for item in bookings:
     order = {
+      'id': item.id,
       'attraction': {
         "id": item.attraction._id,
         "name": item.attraction.name,
@@ -73,3 +74,10 @@ def get_response_data(bookings):
   return response
 
 
+def get_booking_by_id(id):
+  return Booking.query.filter_by(id=id).first()
+
+def delete_booking(booking):
+  db.session.delete(booking)
+  db.session.commit()
+  
