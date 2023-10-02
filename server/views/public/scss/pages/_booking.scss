@@ -6,8 +6,17 @@
   max-width: 1000px;
   color: #666666;
 }
-.member__input {
+.booking__input {
   height: 38px;
+  width: 250px;
+  border: 2px solid transparent;
+  background-color: $gray-10;
+  transition: all 0.1s ease-in;
+  &:focus {
+    outline: 0;
+    background-color: white;
+    border: 2px solid $primary;
+  }
 }
 .card__delete {
   top: 0;
@@ -15,4 +24,38 @@
 }
 .booking__infor .card__img {
   max-width: 250px;
+}
+.booking__submit {
+  box-shadow: inset 0px 2px 3px 0px $gray-20;
+  border: 1px solid $primary;
+  background-color: $primary;
+  color: white;
+  border-radius: 4px;
+  &:disabled{
+    box-shadow: inset 0px 2px 3px 0px $gray-20;
+    background-color: $gray-50;
+    border: 1px solid $gray-50;
+  }
+}
+
+
+.tappay-field-focus {
+  border-color: $primary;
+  background-color: white;
+  outline: 0;
+}
+
+.has-error .tappay-field-focus{
+  border-color: #D65350;
+  background-color: #fff4f4;
+}
+.has-success .tappay-field-focus {
+  border-color: $primary;
+}
+
+
+.has-error.booking__input{
+  border-color: #D65350;
+  background-color: #fff4f4;
+  color: #D65350;
 }

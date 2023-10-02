@@ -60,7 +60,9 @@ $line-height: (
   );
 
 $primary: #489;
+$gray-10: #f5f5f5;
 $gray-20: #E8E8E8;
+$gray-50: #757575;
 $color: (
   primary: $primary,
   gray-90: #cccccc,
@@ -69,5 +71,5 @@ $color: (
   gray-20: $gray-20,
   gray-10: #F8F8F8,
   white: white,
-  red: red
+  red: #d65350
 );

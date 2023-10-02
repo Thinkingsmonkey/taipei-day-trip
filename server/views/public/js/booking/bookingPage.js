@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 })
 
 async function renderBookingList() {
-  const bookingsData  = (await getBookings()).data
+  bookingsData  = (await getBookings()).data
   if (bookingsData.length === 0) {
     const bookingMain = document.querySelector('.booking__main');
     const bookingFooter = document.querySelector('.booking__footer');
@@ -36,7 +36,7 @@ function renderBookingInfor (result) {
   const bookingMain = document.querySelector('.booking__main') ;
   bookingMain.classList.remove('d-none')
   if (!result) return
-  const memberInput = document.querySelectorAll('.booking__member .member__input') ;
+  const memberInput = document.querySelectorAll('.booking__member .booking__input') ;
   const memberNameInput = memberInput[0]
   const memberEmailInput = memberInput[1]
   memberNameInput.value = memberName

@@ -80,3 +80,18 @@ CREATE TABLE booking(
     FOREIGN KEY (attraction_id) REFERENCES attraction(_id) ON DELETE CASCADE,
     FOREIGN KEY (member_id) REFERENCES member(id) ON DELETE CASCADE
 );
+
+SELECT * FROM orders;
+-- drop table orders;
+CREATE TABLE orders(
+	id INT PRIMARY KEY AUTO_INCREMENT,
+    attraction_id INT NOT NULL,
+    number INT NOT NULL,
+    price INT NOT NULL,
+    date DATE,
+    time ENUM('afternoon', 'morning'),
+    price INT NOT NULL,
+    unique(attraction_id, date, time),
+    FOREIGN KEY (attraction_id) REFERENCES attraction(_id) ON DELETE CASCADE,
+    FOREIGN KEY (member_id) REFERENCES member(id) ON DELETE CASCADE
+);

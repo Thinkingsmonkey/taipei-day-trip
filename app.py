@@ -5,6 +5,7 @@ from server.routes.attractions.attractions_view import attraction_space
 from server.routes.mrt.mrt_view import mrt_space
 from server.routes.member.member_controller import member_spance
 from server.routes.booking.booking_controller import booking_space
+from server.routes.order.order_controller import orders_space
 from config import Config
 
 
@@ -67,6 +68,7 @@ def create_app():
 	api.add_namespace(mrt_space)
 	api.add_namespace(member_spance)
 	api.add_namespace(booking_space)
+	api.add_namespace(orders_space)
 
 	return app
 

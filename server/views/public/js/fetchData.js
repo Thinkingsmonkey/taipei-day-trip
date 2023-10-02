@@ -1,9 +1,9 @@
 // index.html fetch variables
 let nextPage = null;
 let keyword = "";
-const SERVER_URL = "https://flask-react.to-do-app.com" // 部署 https 彈性 IP
+// const SERVER_URL = "https://flask-react.to-do-app.com" // 部署 https 彈性 IP
 // const SERVER_URL = "http://13.113.8.196:3000" // 部署
-// const SERVER_URL = ""; // 開發
+const SERVER_URL = ""; // 開發
 
 // set Page、keyword
 const setParameter = (newNextPage, newKeyword = "") => {
@@ -113,6 +113,19 @@ function deleteBooking(id) {
       "Content-type": "application/json",
       "Authorization": "Bearer " + localStorage.getItem("token") 
     }
+  };
+  return getFetch(url, option);
+}
+
+function orderSend(data) {
+  const url = SERVER_URL +  "/api/orders";
+  const option = {
+    method: "POST",
+    headers: {
+      "Content-type": "application/json",
+      "Authorization": "Bearer " + localStorage.getItem("token") 
+    },
+    body: JSON.stringify(data)
   };
   return getFetch(url, option);
 }
