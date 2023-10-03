@@ -8,27 +8,19 @@ import datetime
 orders_space = Namespace(path="/api", name="訂單付款")
 
 @orders_space.route('/orders')
-class Orders(Resource):
+class OrdersAPI(Resource):
   
   @jwt_required()
   @orders_space.expect(orders_input_model)
   @orders_space.marshal_with(orders_output_model)
   def post(self):
     data = orders_space.payload
+    order_default_data = get_order_data(data)
+    booking_ids = get_booking_ids(data)
+    
     partner_key = 'partner_CB4Z8Nu3P0jrNH8mG5ETHt32a2j1TVerCUfSbcfH9oXpqlmXVDQzu1ib'
     merchant_id = 'neal99185_CTBC'
-    data_to_tappay = {
-      "prime": data["prime"],
-      "partner_key": partner_key,
-      "merchant_id": merchant_id,
-      "details": "TapPay Test",
-      "amount": data["order"]["price"],
-      "cardholder": {
-					"phone_number": data["order"]["contact"]["phone"],
-					"name": data["order"]["contact"]["name"],
-					"email": data["order"]["contact"]["email"],
-      },
-    }
+    data_to_tappay = get_tappay_data(data, partner_key, merchant_id)
     headers = {
 					"Content-Type": "application/json",
 					"x-api-key":partner_key
@@ -36,17 +28,26 @@ class Orders(Resource):
     url = 'https://sandbox.tappaysdk.com/tpc/payment/pay-by-prime' # test URL
     response = requests.post(url, data=json.dumps(data_to_tappay), headers=headers)
     responseData = response.json()
-    if not responseData["status"] == 0: abort(500, '連線失敗，請重新嘗試')
-    now = datetime.datetime.now()
-    number = now.strftime('%Y%m%d%H%M%S')
-    data = {
-      "data": {
-        "number": number,
-        "payment": {
-          "status": responseData["status"],
-          "message": "付款成功"
-        }
-      }
-    }
-    print(response.json(), number)
+
+    if not responseData["status"] == 0: 
+      create_order_and_delete_bookings(booking_ids, order_default_data)
+      abort(500, '連線失敗，請重新嘗試')
+    
+    order_default_data["status"] = True
+    order_success_data = order_default_data
+    data = get_create_orders_response(order_success_data)
+    member_id = get_jwt()["id"]
+    create_order_and_delete_bookings(booking_ids, order_success_data, member_id)
     return data
+  
+ 
+
+@orders_space.route('/order/<number>')
+class OrdersGetAPI(Resource):
+  @jwt_required()
+  # @orders_space.marshal_with(orders_output_model)
+  def get(self, number):
+    order = get_order_by_number(number)
+    response = get_order_response(order)
+
+    return response

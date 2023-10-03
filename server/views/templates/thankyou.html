@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block head %} 
+台北一日遊-付款完成 
+{% endblock%} 
+
+
+{% block main %} 
+<main class="thankyou__main container thankyou__main pt-1d25 d-none">
+    <h2 class=" mb-1d25 fz-24 lh-27px text-primary ">您好，test，感謝您訂購台北一日遊</h2>
+    <hr class="mb-1d25">
+    <section class="booking__member px-d625 mb-1d25">
+      <span class="d-inblock mb-15px fz-19 fw-7">訂單編號：</span><span class="thankyou__number fz-19 fw-7 mr-auto"></span>
+      <br>
+      <span class="d-inblock mb-15px fz-19 fw-7">訂單費用：</span><span class="thankyou__total fz-19 fw-7"></span>
+      <div class="member__name d-flex align-items-center mb-15px">
+        <span class="fw-5 lh-1d5">聯絡姓名：</span
+        ><span class="fw-5 lh1d5 contact__name"></span>
+      </div>
+      <div class="member__email d-flex align-items-center mb-15px">
+        <span class="fw-5 lh-1d5">連絡信箱：</span
+        ><span class="fw-5 lh1d5 contact__email"></span>
+      </div>
+      <div class="member__phone d-flex align-items-center mb-15px">
+        <span class="fw-5 lh-1d5">手機號碼：</span
+        ><span class="fw-5 lh1d5 contact__phone"></span>
+      </div>
+      <div class="member__message fw-7 lh-1d5">
+        請保持手機暢通，準時到達，導覽人員將用手機與您聯繫，務必留下正確的聯絡方式。
+      </div>
+    </section>
+    <hr class="mb-1d25">
+    <ul class="booking__list px-d625 mb-2d5 d-flex d-flex-column gap-2d5"></ul>
+</main>
+{% endblock %}
+
+{% block footer %}
+<footer class="bg-gray-50 text-center py-2d5 w-100 poa">
+  <p class="text-white">COPYRIGHT © 2023 台北一日遊</p>
+</footer>
+{% endblock %}
+
+
+
+{% block javascript %}
+<script src="{{ url_for('static', filename='js/thankyou/thankyouPage.js') }}"></script>
+{%endblock %}

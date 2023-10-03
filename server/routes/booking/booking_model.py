@@ -49,12 +49,13 @@ def add_booking(booking):
   db.session.commit()
 
 def get_bookings_by_member_id(id):
-  member = Member.query.filter_by(id=id).first()
-  return member.bookings
+  return Booking.query.filter(
+        Booking.member_id == id,
+        Booking.is_deleted == False
+    ).all()
 
 
-def get_response_data(bookings):
-  response = {}
+def get_bookings_data(bookings):
   orders = []
   for item in bookings:
     order = {
@@ -70,8 +71,7 @@ def get_response_data(bookings):
       'price': item.price
     }
     orders.append(order)
-  response["data"] = orders
-  return response
+  return orders
 
 
 def get_booking_by_id(id):
@@ -80,4 +80,14 @@ def get_booking_by_id(id):
 def delete_booking(booking):
   db.session.delete(booking)
   db.session.commit()
-  
+
+def is_existing_booking(booking_data):
+  existing_booking = Booking.query.filter(
+    Booking.attraction_id == booking_data["attraction_id"],
+    Booking.date == booking_data["date"],
+    Booking.time == booking_data["time"],
+    Booking.is_deleted == False
+  ).first()
+  if existing_booking:
+    return True
+  return False

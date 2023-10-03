@@ -137,10 +137,15 @@ TPDirect.setupSDK(APP_ID, APP_KEY, "sandbox");
       }
 
       const response = await orderSend(orderData)
-      console.log(response);
+      if (!response.data.payment.status === 0) {
+        document.querySelector('.booking__error').textContent = "輸入或連線錯誤，請重新嘗試";
+        return
+      }
+      window.location.href = '/thankyou?number=' + response.data.number
     });
   });
 
+  
   function forceBlurIos() {
     if (!isIos()) {
       return;
@@ -156,8 +161,6 @@ TPDirect.setupSDK(APP_ID, APP_KEY, "sandbox");
   function isIos() {
     return /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
   }
-
-
   
   function changeStatus(element, number){
     switch(number) {

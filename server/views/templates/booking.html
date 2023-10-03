@@ -68,6 +68,7 @@ block main %}
 </footer>
 {% endblock %} {% block javascript %}
 <script src="https://js.tappaysdk.com/sdk/tpdirect/v5.17.0"></script>
+<script src="{{ url_for('static', filename='js/booking/bookingModel.js') }}"></script>
 <script src="{{ url_for('static', filename='js/booking/bookingPage.js') }}"></script>
 <script src="{{ url_for('static', filename='js/booking/tappay.js') }}"></script>
 

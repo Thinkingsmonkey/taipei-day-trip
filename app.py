@@ -34,6 +34,9 @@ def create_app():
 	@app.route("/thankyou")
 	def thankyou():
 		return render_template("thankyou.html")
+	@app.route("/member")
+	def member():
+		return render_template("member.html")
 
 
 	# response token with member id

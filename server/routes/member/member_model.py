@@ -25,6 +25,10 @@ member_check_output_model = api.model("MemberCheck", {
     "data": fields.Nested(member_check_infor_model)
 })
 
+member_orders_output_model = api.model("MemberOrders", {
+  "number": fields.String
+}) 
+
 
 def generate_salt():
     return secrets.token_hex(16)
@@ -40,3 +44,9 @@ def create_member(new_member_data):
 def signup(new_member):
   db.session.add(new_member)
   db.session.commit()
+
+
+def get_member_orders_by_id(id):
+  return Member.query.filter_by(id=id).first().orders
+
+

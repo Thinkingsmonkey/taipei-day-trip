@@ -239,6 +239,66 @@
   line-height: 27px;
 }
 
+.gap-auto {
+  gap: auto;
+}
+
+.p-auto {
+  padding: auto;
+}
+
+.pt-auto {
+  padding-top: auto;
+}
+
+.pb-auto {
+  padding-bottom: auto;
+}
+
+.pl-auto {
+  padding-left: auto;
+}
+
+.pr-auto {
+  padding-right: auto;
+}
+
+.px-auto {
+  padding-right: auto;
+  padding-left: auto;
+}
+
+.py-auto {
+  padding-top: auto;
+  padding-bottom: auto;
+}
+
+.mt-auto {
+  margin-top: auto;
+}
+
+.mb-auto {
+  margin-bottom: auto;
+}
+
+.ml-auto {
+  margin-left: auto;
+}
+
+.mr-auto {
+  margin-right: auto;
+}
+
+.mx-auto {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.my-auto {
+  margin-top: auto;
+  margin-bottom: auto;
+}
+
 .gap-d25 {
   gap: 0.25rem;
 }
@@ -1667,6 +1727,11 @@ body {
   border-color: #D65350;
   background-color: #fff4f4;
   color: #D65350;
+}
+
+.thankyou__main {
+  max-width: 1000px;
+  color: #666666;
 }
 
 @media (max-width: 1200px) {

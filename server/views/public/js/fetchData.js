@@ -129,3 +129,27 @@ function orderSend(data) {
   };
   return getFetch(url, option);
 }
+
+function getOrder(number) {
+  const url = SERVER_URL +  "/api/order/" + number;
+  const option = {
+    method: "GET",
+    headers: {
+      "Content-type": "application/json",
+      "Authorization": "Bearer " + localStorage.getItem("token") 
+    }
+  };
+  return getFetch(url, option);
+}
+
+function getMemberOrders() {
+  const url = SERVER_URL +  "/api/user/orders";
+  const option = {
+    method: "GET",
+    headers: {
+      "Content-type": "application/json",
+      "Authorization": "Bearer " + localStorage.getItem("token") 
+    }
+  };
+  return getFetch(url, option);
+}

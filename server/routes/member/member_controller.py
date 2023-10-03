@@ -61,5 +61,12 @@ class Member(Resource):
     return jsonify({"token": access_token})
   
 
-  
+@member_spance.route("/user/orders")
+class MemberDashboard(Resource):
+  @jwt_required()
+  @member_spance.marshal_with(member_orders_output_model)
+  def get(self):
+    member_id = get_jwt()["id"]
+    orders = get_member_orders_by_id(member_id)
+    return orders
 
