@@ -137,12 +137,12 @@ TPDirect.setupSDK(APP_ID, APP_KEY, "sandbox");
         }
       }
 
-      const response = await orderSend(orderData)
-      if (!response.data.payment.status === 0) {
-        document.querySelector('.booking__error').textContent = "輸入或連線錯誤，請重新嘗試";
-        return
-      }
-      window.location.href = '/thankyou?number=' + response.data.number
+      // const response = await orderSend(orderData)
+      // if (!response.data.payment.status === 0) {
+      //   document.querySelector('.booking__error').textContent = "輸入或連線錯誤，請重新嘗試";
+      //   return
+      // }
+      // window.location.href = '/thankyou?number=' + response.data.number
     });
   });
 
