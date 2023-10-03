@@ -143,7 +143,7 @@ TPDirect.setupSDK(APP_ID, APP_KEY, "sandbox");
         document.querySelector('.booking__error').textContent = error.message;
         return
       }
-      
+      console.log(response);
       window.location.href = '/thankyou?number=' + response.number
     });
   });
