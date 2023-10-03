@@ -41,6 +41,7 @@ class Member(db.Model):
     salt = db.Column(db.String(255), nullable=False)
     password_hash = db.Column(db.String(500), nullable=False)
     bookings = db.relationship("Booking", back_populates="member", cascade="all, delete-orphan")
+    orders = db.relationship("Orders", back_populates="member", cascade="all, delete-orphan")
 
 class Booking(db.Model):
     id = db.Column(db.Integer, primary_key=True, autoincrement=True)
@@ -49,6 +50,27 @@ class Booking(db.Model):
     date = db.Column(db.Date)
     time = db.Column(db.Enum("afternoon", "morning"))
     price = db.Column(db.Integer, nullable=False)
+    is_deleted = db.Column(db.Boolean, default=False, nullable=False)
     member = db.relationship("Member", back_populates="bookings")
     attraction = db.relationship("Attraction", back_populates="bookings")
-    __table_args__ = (UniqueConstraint('attraction_id', 'date', 'time', name='unique_attraction_date_time'),)
+    orders = db.relationship('Orders', secondary='orders_bookings', back_populates='bookings')
+
+
+
+class Orders(db.Model):
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    number = db.Column(db.Integer, nullable=False)
+    price = db.Column(db.Integer, nullable=False)
+    name = db.Column(db.String(255))
+    email = db.Column(db.String(255))
+    phone = db.Column(db.String(255))
+    member_id = db.Column(db.Integer, db.ForeignKey("member.id"), nullable=False)
+    status = db.Column(db.Boolean, default=False, nullable=False)
+    bookings = db.relationship('Booking', secondary='orders_bookings', back_populates='orders')
+    member = db.relationship("Member", back_populates="orders")
+
+
+class OrdersBookings(db.Model):
+    id = db.Column(db.Integer, primary_key=True, autoincrement=True)
+    orders_id = db.Column(db.Integer, db.ForeignKey('orders.id'), nullable=False)
+    booking_id = db.Column(db.Integer, db.ForeignKey('booking.id'), nullable=False)

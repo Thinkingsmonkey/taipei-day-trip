@@ -15,7 +15,6 @@ function changeSignCard(closed=false) {
     input.value = "";
   });
   if (closed || !memberButton.classList.contains("login")) {
-    console.log("closed");
     memberTitle.textContent = "登入會員帳號";
     memberButton.textContent = "登入帳戶";
     navigationLink.textContent = "點此註冊";

@@ -60,7 +60,7 @@
 }
 
 .border-red {
-  border-color: red;
+  border-color: #d65350;
 }
 
 .bottom-0 {
@@ -184,11 +184,11 @@
 }
 
 .text-red {
-  color: red;
+  color: #d65350;
 }
 
 .bg-red {
-  background-color: red;
+  background-color: #d65350;
 }
 
 .fz-16 {
@@ -237,6 +237,66 @@
 
 .lh-27px {
   line-height: 27px;
+}
+
+.gap-auto {
+  gap: auto;
+}
+
+.p-auto {
+  padding: auto;
+}
+
+.pt-auto {
+  padding-top: auto;
+}
+
+.pb-auto {
+  padding-bottom: auto;
+}
+
+.pl-auto {
+  padding-left: auto;
+}
+
+.pr-auto {
+  padding-right: auto;
+}
+
+.px-auto {
+  padding-right: auto;
+  padding-left: auto;
+}
+
+.py-auto {
+  padding-top: auto;
+  padding-bottom: auto;
+}
+
+.mt-auto {
+  margin-top: auto;
+}
+
+.mb-auto {
+  margin-bottom: auto;
+}
+
+.ml-auto {
+  margin-left: auto;
+}
+
+.mr-auto {
+  margin-right: auto;
+}
+
+.mx-auto {
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.my-auto {
+  margin-top: auto;
+  margin-bottom: auto;
 }
 
 .gap-d25 {
@@ -1358,6 +1418,10 @@ a {
   display: none;
 }
 
+.d-inblock {
+  display: inline-block;
+}
+
 .poa {
   position: absolute;
 }
@@ -1458,7 +1522,7 @@ a {
   top: 0;
   left: 0;
   right: 0;
-  height: 10px; /* 边框高度 */
+  height: 10px; /* 邊框高度 */
   background: linear-gradient(to right, #66aabb, #337788);
 }
 .member__card .member__close {
@@ -1609,8 +1673,17 @@ body {
   color: #666666;
 }
 
-.member__input {
+.booking__input {
   height: 38px;
+  width: 250px;
+  border: 2px solid transparent;
+  background-color: #f5f5f5;
+  transition: all 0.1s ease-in;
+}
+.booking__input:focus {
+  outline: 0;
+  background-color: white;
+  border: 2px solid #489;
 }
 
 .card__delete {
@@ -1620,6 +1693,45 @@ body {
 
 .booking__infor .card__img {
   max-width: 250px;
+}
+
+.booking__submit {
+  box-shadow: inset 0px 2px 3px 0px #E8E8E8;
+  border: 1px solid #489;
+  background-color: #489;
+  color: white;
+  border-radius: 4px;
+}
+.booking__submit:disabled {
+  box-shadow: inset 0px 2px 3px 0px #E8E8E8;
+  background-color: #757575;
+  border: 1px solid #757575;
+}
+
+.tappay-field-focus {
+  border-color: #489;
+  background-color: white;
+  outline: 0;
+}
+
+.has-error .tappay-field-focus {
+  border-color: #D65350;
+  background-color: #fff4f4;
+}
+
+.has-success .tappay-field-focus {
+  border-color: #489;
+}
+
+.has-error.booking__input {
+  border-color: #D65350;
+  background-color: #fff4f4;
+  color: #D65350;
+}
+
+.thankyou__main {
+  max-width: 1000px;
+  color: #666666;
 }
 
 @media (max-width: 1200px) {

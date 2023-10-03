@@ -1,48 +1,75 @@
-{% extends "base.html" %}
-
-{% block head %} 
-台北一日遊-Booking 
-{% endblock%} 
-
-
-{% block main %}
+{% extends "base.html" %} {% block head %} 台北一日遊-Booking {% endblock%} {%
+block main %}
 <main class="booking__main container pt-2d5 d-none">
   <div class="infor__title mb-1d875 fz-19 fw-7 lh-27px"></div>
   <div class="infor__content">
-    <ul class="booking__list px-d625 mb-2d5 d-flex d-flex-column gap-2d5">
-    </ul>
-    <hr class="horizontal-line mb-2d5">
+    <ul class="booking__list px-d625 mb-2d5 d-flex d-flex-column gap-2d5"></ul>
+    <hr class="horizontal-line mb-2d5" />
     <section class="booking__member px-d625 mb-2d5">
       <div class="member__title fz-19 lh-24px fw-7 mb-1d25">您的聯絡資訊</div>
-      <div class="member__name d-flex align-items-center mb-15px"><span class="fw-5 lh-1d5">聯絡姓名：</span><input type="text" class="member__input fz-16 fw-5 p-d625"></div>
-      <div class="member__email d-flex align-items-center mb-15px"><span class="fw-5 lh-1d5">連絡信箱：</span><input type="text" class="member__input fz-16 fw-5 p-d625"></div>
-      <div class="member__phone d-flex align-items-center mb-15px"><span class="fw-5 lh-1d5">手機號碼：</span><input type="text" class="member__input fz-16 fw-5 p-d625"></div>
-      <div class="member__message fw-7 lh-1d5">請保持手機暢通，準時到達，導覽人員將用手機與您聯繫，務必留下正確的聯絡方式。</div>
+      <div class="member__name d-flex align-items-center mb-15px">
+        <span class="fw-5 lh-1d5">聯絡姓名：</span
+        ><input type="text" placeholder="username" class="booking__input rounded-5px fz-16 fw-5 p-d625" required />
+      </div>
+      <div class="member__email d-flex align-items-center mb-15px">
+        <span class="fw-5 lh-1d5">連絡信箱：</span
+        ><input type="email" placeholder="yourEmail@example.com" class="booking__input rounded-5px fz-16 fw-5 p-d625" required />
+      </div>
+      <div class="member__phone d-flex align-items-center mb-15px">
+        <span class="fw-5 lh-1d5">手機號碼：</span
+        ><input type="text" placeholder="0930-xxx-xxx" class="booking__input rounded-5px fz-16 fw-5 p-d625" maxlength="10" required />
+      </div>
+      <div class="member__message fw-7 lh-1d5">
+        請保持手機暢通，準時到達，導覽人員將用手機與您聯繫，務必留下正確的聯絡方式。
+      </div>
     </section>
-    <hr class="horizontal-line mb-2d5">
+    <hr class="horizontal-line mb-2d5" />
     <section class="booking__credit px-d625 mb-2d5">
       <div class="credit__title fz-19 lh-24px fw-7 mb-1d25">信用卡付款資訊</div>
-      <div class="credit__number d-flex align-items-center mb-15px"><span class="fw-5 lh-1d5">卡片號碼：</span><input placeholder="**** **** **** ****"  type="text" class="credit__input fz-16 fw-5 p-d625"></div>
-      <div class="credit__exp d-flex align-items-center mb-15px"><span class="fw-5 lh-1d5">過期時間：</span><input placeholder="MM / YY"  type="text" pattern="(0[1-9]|1[0-2])\/\d{2}" class="credit__input fz-16 fw-5 p-d625"></div>
-      <div class="credit__password d-flex align-items-center mb-15px"><span class="fw-5 lh-1d5">驗證密碼：</span><input placeholder="CVV"  type="password" class="credit__input fz-16 fw-5 p-d625"></div>
-    </section>
-    <hr class="horizontal-line mb-2d5">
-    <section class="booking__checkout px-d625 text-end mb-2d5">
-      <div class="checkout__total mb-1d375 fw-7 lh-17px">總價：新台幣 2000 元</div>
-      <button class="py-d625 px-1d25 bg-primary border-0 rounded-5px fz-19 text-white mb-1d375 cursor-pointer">確認訂購並付款</button>
+      <form class="form">
+        <div class="form-group d-flex align-items-center mb-15px card-number-group">
+          <label for="card-number" class="control-label fw-5 lh-1d5"
+            ><span id="cardtype"></span>卡片號碼：</label
+          >
+          <div class="form-control d-inblock booking__input rounded-5px fw-5 p-d625 card-number"></div>
+        </div>
+        <div class="form-group d-flex align-items-center mb-15px expiration-date-group">
+          <label for="expiration-date" class="control-label fw-5 lh-1d5">有效日期：</label>
+          <div
+            class="form-control d-inblock booking__input rounded-5px fw-5 p-d625 expiration-date"
+            id="tappay-expiration-date"
+          ></div>
+        </div>
+        <div class="form-group d-flex align-items-center mb-15px ccv-group">
+          <label for="ccv" class="control-label fw-5 lh-1d5">驗證密碼：</label>
+          <div class="form-control d-inblock booking__input rounded-5px fw-5 p-d625 ccv"></div>
+        </div>
+        <hr class="horizontal-line mb-2d5" />
+        <section class="booking__checkout px-d625 text-end mb-2d5">
+          <div class="checkout__total mb-1d375 fw-7 lh-17px">
+            總價：新台幣 2000 元
+          </div>
+          <span class="mr-d625 booking__error text-red fw-7"></span>
+          <button
+            type="submit"
+            class="booking__submit py-d625 px-1d25 bg-primary border-0 rounded-5px fz-19 text-white mb-1d375 cursor-pointer"
+            disabled="disabled"
+          >
+            確認訂購並付款
+          </button>
+        </section>
+      </form>
     </section>
   </div>
 </main>
-{% endblock%} 
-
-
-{% block footer %}
+{% endblock%} {% block footer %}
 <footer class="booking__footer bg-gray-50 text-center py-2d5 w-100 poa">
   <p class="text-white">COPYRIGHT © 2023 台北一日遊</p>
 </footer>
-{% endblock %}
-
-
-{% block javascript %}
+{% endblock %} {% block javascript %}
+<script src="https://js.tappaysdk.com/sdk/tpdirect/v5.17.0"></script>
+<script src="{{ url_for('static', filename='js/booking/bookingModel.js') }}"></script>
 <script src="{{ url_for('static', filename='js/booking/bookingPage.js') }}"></script>
+<script src="{{ url_for('static', filename='js/booking/tappay.js') }}"></script>
+
 {%endblock %}

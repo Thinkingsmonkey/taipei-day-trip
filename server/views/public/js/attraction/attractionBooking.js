@@ -2,7 +2,6 @@ const startBooking = document.querySelector('.card__button');
 
 startBooking.addEventListener('click', async (e) => {
   const element = e.target;
-
   if (element.closest('button') !== startBooking) return
   if (localStorage.getItem('token')) {
     const attractionId = window.location.pathname.split('/')[2];
@@ -40,6 +39,7 @@ startBooking.addEventListener('click', async (e) => {
     window.location.href = "/booking";
     return
   }
+
   memberCard.parentElement.style.visibility = 'visible';
   memberCard.style.top = '80px';
 })

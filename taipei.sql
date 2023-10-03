@@ -13,9 +13,6 @@ FROM (
 ) AS subquery
 ORDER BY subquery.num_around_attractions DESC;
 
-SELECT attraction.Mrt, COUNT(attraction._id) AS num_around_attractions
-FROM attraction
-GROUP BY attraction.Mrt;
 
 INSERT INTO attraction(rate, direction, name, date,
  longitude, REF_WP, avBegin, langinfo,
@@ -23,7 +20,7 @@ INSERT INTO attraction(rate, direction, name, date,
  POI, file, idpt, latitude, description, _id,
  avEnd, address) values();
 
-show create table attractionImg;
+
 SELECT * FROM attractionImg;
 CREATE TABLE attractionImg(
 	id INT PRIMARY KEY AUTO_INCREMENT,
@@ -32,8 +29,6 @@ CREATE TABLE attractionImg(
     FOREIGN KEY (attraction_id) REFERENCES attraction(_id) ON DELETE CASCADE
 );
 
-
-SELECT MRT, COUNT(MRT) FROM attraction group by MRT;
 
 SELECT * FROM attraction;
 CREATE TABLE attraction(
@@ -67,6 +62,7 @@ CREATE TABLE member(
     salt VARCHAR(255) NOT NULL,
     password_hash VARCHAR(500) NOT NULL
 );
+
 SELECT * FROM booking;
 -- drop table booking;
 CREATE TABLE booking(
@@ -76,7 +72,31 @@ CREATE TABLE booking(
     date DATE,
     time ENUM('afternoon', 'morning'),
     price INT NOT NULL,
-    unique(attraction_id, date, time),
+    is_deleted BOOL,
     FOREIGN KEY (attraction_id) REFERENCES attraction(_id) ON DELETE CASCADE,
     FOREIGN KEY (member_id) REFERENCES member(id) ON DELETE CASCADE
+);
+
+SELECT * FROM orders;
+-- drop table orders;
+CREATE TABLE orders(
+	id INT PRIMARY KEY AUTO_INCREMENT,
+    number VARCHAR(255) NOT NULL,
+    member_id INT NOT NULL,
+    price INT NOT NULL,
+    name VARCHAR(255),
+    email VARCHAR(255),
+    phone VARCHAR(255),
+    status INT NOT NULL,
+    FOREIGN KEY (member_id) REFERENCES member(id) ON DELETE CASCADE
+);
+
+SELECT * FROM orders_bookings;
+-- drop table orders_bookings;
+CREATE TABLE orders_bookings(
+	id INT PRIMARY KEY AUTO_INCREMENT,
+    orders_id INT NOT NULL,
+    booking_id INT NOT NULL,
+    FOREIGN KEY (orders_id) REFERENCES orders(id) ON DELETE CASCADE,
+    FOREIGN KEY (booking_id) REFERENCES booking(id) ON DELETE CASCADE
 );

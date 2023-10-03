@@ -14,6 +14,9 @@ const prevButton = document.querySelector('.pagination-left');
 const cardImgs = document.querySelector(".card__imgs");
 const navigations = document.querySelector(".navigations");
 
+const APP_ID = 137035;
+const APP_KEY = 'app_C96W1kzNVZHFO0O1ffPrc5W1Xcw9G4rN7BL3pmIel4PYoOQyLG5jhX595Cz2';
 
 let memberName = '';
 let memberEmail = '';
+let bookingsData = null;

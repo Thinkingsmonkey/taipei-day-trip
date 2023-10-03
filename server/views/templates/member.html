@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block head %} 
+台北一日遊-會員中心
+{% endblock%} 
+
+{% block main %}
+<main class="member__main d-none">
+  <div class="container px-2d5">
+    <h2 class="mb-1d25 fz-24 text-primary pt-2d5">訂單歷史紀錄</h2>
+    <ul class="member__orders">
+      
+    </ul>
+  </div>
+</main>
+{% endblock %}
+
+
+{% block footer %}
+<footer class="bg-gray-50 text-center py-2d5 w-100 poa">
+  <p class="text-white">COPYRIGHT © 2023 台北一日遊</p>
+</footer>
+{% endblock %}
+
+{% block javascript %}
+<script src="{{ url_for('static', filename='js/member/memberPage.js') }}"></script>
+{%endblock %}

@@ -116,3 +116,40 @@ function deleteBooking(id) {
   };
   return getFetch(url, option);
 }
+
+function orderSend(data) {
+  const url = SERVER_URL +  "/api/orders";
+  const option = {
+    method: "POST",
+    headers: {
+      "Content-type": "application/json",
+      "Authorization": "Bearer " + localStorage.getItem("token") 
+    },
+    body: JSON.stringify(data)
+  };
+  return getFetch(url, option);
+}
+
+function getOrder(number) {
+  const url = SERVER_URL +  "/api/order/" + number;
+  const option = {
+    method: "GET",
+    headers: {
+      "Content-type": "application/json",
+      "Authorization": "Bearer " + localStorage.getItem("token") 
+    }
+  };
+  return getFetch(url, option);
+}
+
+function getMemberOrders() {
+  const url = SERVER_URL +  "/api/user/orders";
+  const option = {
+    method: "GET",
+    headers: {
+      "Content-type": "application/json",
+      "Authorization": "Bearer " + localStorage.getItem("token") 
+    }
+  };
+  return getFetch(url, option);
+}

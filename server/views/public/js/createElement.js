@@ -1,7 +1,13 @@
 // create function
 const createCard = (data) => {
   const liElement = document.createElement("li");
-  liElement.classList.add("card", "card-index", "d-flex", "d-flex-column", "cursor-pointer");
+  liElement.classList.add(
+    "card",
+    "card-index",
+    "d-flex",
+    "d-flex-column",
+    "cursor-pointer"
+  );
 
   const divHeard = document.createElement("div");
   divHeard.classList.add("card__head", "grow-1", "por");
@@ -90,61 +96,65 @@ const createAttractionPageInfor = (data) => {
   description.textContent = data.data.description;
   address.textContent = data.data.address;
   transport.textContent = data.data.transport;
-}
+};
 
 const createImageLi = (src) => {
-  const imageLi = document.createElement('li');
-  imageLi.classList.add("shrink-0", "w-100", "attraction__imageLi")
-  const image = document.createElement('img');
+  const imageLi = document.createElement("li");
+  imageLi.classList.add("shrink-0", "w-100", "attraction__imageLi");
+  const image = document.createElement("img");
   image.classList.add("w-100", "object-fit-cover", "h-100");
   image.setAttribute("src", src);
   image.setAttribute("alt", "attraction");
-  imageLi.appendChild(image)
-  return imageLi
-}
+  imageLi.appendChild(image);
+  return imageLi;
+};
 
 const createBookingLi = (booking) => {
-  const li = document.createElement('li');
-  li.classList.add('booking__infor');
+  const li = document.createElement("li");
+  li.classList.add("booking__infor");
 
-  const inforCard = document.createElement('div');
-  inforCard.classList.add('infor__card', 'd-flex', 'por');
+  const inforCard = document.createElement("div");
+  inforCard.classList.add("infor__card", "d-flex", "por");
 
-  const attractionImg = document.createElement('img');
-  attractionImg.classList.add('card__img', 'mr-1d875');
-  attractionImg.setAttribute('src', booking.attraction.image);
-  attractionImg.setAttribute('alt', booking.attraction.name);
+  const attractionImg = document.createElement("img");
+  attractionImg.classList.add("card__img", "mr-1d875");
+  attractionImg.setAttribute("src", booking.attraction.image);
+  attractionImg.setAttribute("alt", booking.attraction.name);
 
-  const cardContent = document.createElement('div');
-  cardContent.classList.add('card__content', 'lh-1d5');
+  const cardContent = document.createElement("div");
+  cardContent.classList.add("card__content", "lh-1d5");
 
-  const title = document.createElement('h2');
-  title.classList.add('content__title', 'fw-7', 'mb-1d25', 'text-primary');
+  const title = document.createElement("h2");
+  title.classList.add("content__title", "fw-7", "mb-1d25", "text-primary");
   title.textContent = `台北一日遊：${booking.attraction.name}`;
-  
-  const createDate = document.createElement('div');
-  createDate.classList.add('content__date', 'mb-d625');
+
+  const createDate = document.createElement("div");
+  createDate.classList.add("content__date", "mb-d625");
   createDate.innerHTML = `<span class="fw-7 mr-5px">日期：</span><span class="fw-5">${booking.date}</span>`;
-  
-  const createTime = document.createElement('div');
-  createTime.classList.add('content__time', 'mb-d625');
-  createTime.innerHTML = `<span class="fw-7 mr-5px">時間：</span><span class="fw-5">${booking.time === "morning" ? "早上 9 點到下午 4 點" : "下午 4 點到晚上 9 點"}</span>`;
-  
-  const createPrice = document.createElement('div');
-  createPrice.classList.add('content__price', 'mb-d625');
-  createPrice.innerHTML = `<span class="fw-7 mr-5px">費用：</span><span class="fw-5">${booking.price === 2500 ? "新台幣 2500 元" : "新台幣 2000 元"}</span>`;
-  
-  const createAttraction = document.createElement('div');
-  createAttraction.classList.add('content__attraction', 'mb-d625');
+
+  const createTime = document.createElement("div");
+  createTime.classList.add("content__time", "mb-d625");
+  createTime.innerHTML = `<span class="fw-7 mr-5px">時間：</span><span class="fw-5">${
+    booking.time === "morning" ? "早上 9 點到下午 4 點" : "下午 4 點到晚上 9 點"
+  }</span>`;
+
+  const createPrice = document.createElement("div");
+  createPrice.classList.add("content__price", "mb-d625");
+  createPrice.innerHTML = `<span class="fw-7 mr-5px">費用：</span><span class="fw-5">${
+    booking.price === 2500 ? "新台幣 2500 元" : "新台幣 2000 元"
+  }</span>`;
+
+  const createAttraction = document.createElement("div");
+  createAttraction.classList.add("content__attraction", "mb-d625");
   createAttraction.innerHTML = `<span class="fw-7 mr-5px">地點：</span><span class="fw-5">${booking.attraction.address}</span>`;
-  
-  const deleteImg = document.createElement('img');
-  deleteImg.setAttribute('src', '../public/img/delete.png');
-  deleteImg.addEventListener('click', async () => {
+
+  const deleteImg = document.createElement("img");
+  deleteImg.setAttribute("src", "../public/img/delete.png");
+  deleteImg.addEventListener("click", async () => {
     const result = await deleteBooking(booking.id);
-    renderBookingList()
-  })
-  deleteImg.classList.add('card__delete', 'poa', 'cursor-pointer');
+    renderBookingList();
+  });
+  deleteImg.classList.add("card__delete", "poa", "cursor-pointer");
 
   // 將所有子元件加入至 cardContent
   cardContent.appendChild(title);
@@ -153,7 +163,7 @@ const createBookingLi = (booking) => {
   cardContent.appendChild(createPrice);
   cardContent.appendChild(createAttraction);
   cardContent.appendChild(deleteImg);
-  
+
   // 將 attractionImg 和 cardContent 加入至 inforCard
   inforCard.appendChild(attractionImg);
   inforCard.appendChild(cardContent);
@@ -162,9 +172,7 @@ const createBookingLi = (booking) => {
   li.appendChild(inforCard);
 
   return li;
-}
-
-
+};
 
 const appendCard = (data, cardList) => {
   data.data.forEach((data) => {
@@ -176,10 +184,32 @@ const appendCard = (data, cardList) => {
       id: data.id,
     };
     const card = createCard(cardData);
-    card.addEventListener('click', () => {
+    card.addEventListener("click", () => {
       window.location.href = "/attraction/" + `${data.id}`;
-    })
+    });
     cardList.appendChild(card);
   });
 };
 
+const createOrderLi = (order) => {
+  const li = document.createElement("li");
+  li.className =
+    "d-flex justify-content-between align-items-center border-1px mb-1d375 p-1d25 rounded-5px border-gray-90 fz-19";
+
+  const p = document.createElement("p");
+  p.className = "order__number";
+  p.textContent = '訂單編號： ' + order.number;
+
+  const button = document.createElement("button");
+  button.className =
+    "py-d625 px-1d25 bg-primary border-0 rounded-5px fz-19 text-white cursor-pointer";
+  button.textContent = "詳細資訊";
+
+  button.addEventListener("click", () => {
+    window.location.href = "/thankyou?number=" + order.number;
+  });
+
+  li.appendChild(p);
+  li.appendChild(button);
+  return li
+};
