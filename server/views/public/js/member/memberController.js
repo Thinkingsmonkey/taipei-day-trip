@@ -30,6 +30,12 @@ document.addEventListener("DOMContentLoaded", async () => {
   memberName = response.data.name
   memberEmail = response.data.email
   sitemapMember.classList.remove('d-none')
+
+  // booking page 載入後執行
+  if (window.location.pathname.split('/')[1] === "booking"){
+    const result = await renderBookingList()
+    renderBookingInfor(result)
+  }
 });
 
 // 登入狀態：點登出 清除 localStorage 重新渲染

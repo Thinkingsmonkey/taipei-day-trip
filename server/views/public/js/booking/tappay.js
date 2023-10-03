@@ -139,12 +139,11 @@ TPDirect.setupSDK(APP_ID, APP_KEY, "sandbox");
       try {
         const response = await orderSend(orderData)
         if (!response.status === 0) throw new Error("連線錯誤，請重新嘗試")
+        window.location.href = '/thankyou?number=' + response.data.number
       } catch (error) {
         document.querySelector('.booking__error').textContent = error.message;
         return
       }
-      console.log(response);
-      window.location.href = '/thankyou?number=' + response.number
     });
   });
 
