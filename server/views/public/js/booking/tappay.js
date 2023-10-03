@@ -122,6 +122,7 @@ TPDirect.setupSDK(APP_ID, APP_KEY, "sandbox");
         alert("get prime error " + result.msg);
         return;
       }
+      console.log(result);
       // 成功取得 prime，整理訂單資料並傳給後端
       let orderData = {
         "prime": result.card.prime,
