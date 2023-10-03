@@ -26,17 +26,18 @@ class OrdersAPI(Resource):
 					"x-api-key":partner_key
     }
     url = 'https://sandbox.tappaysdk.com/tpc/payment/pay-by-prime' # test URL
+    member_id = get_jwt()["id"]
+
     response = requests.post(url, data=json.dumps(data_to_tappay), headers=headers)
     responseData = response.json()
 
     if not responseData["status"] == 0: 
-      create_order_and_delete_bookings(booking_ids, order_default_data)
+      create_order_and_delete_bookings(booking_ids, order_default_data, member_id)
       abort(500, '連線失敗，請重新嘗試')
     
     order_default_data["status"] = True
     order_success_data = order_default_data
     data = get_create_orders_response(order_success_data)
-    member_id = get_jwt()["id"]
     create_order_and_delete_bookings(booking_ids, order_success_data, member_id)
     return data
   
