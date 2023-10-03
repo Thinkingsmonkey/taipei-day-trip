@@ -122,7 +122,6 @@ TPDirect.setupSDK(APP_ID, APP_KEY, "sandbox");
         alert("get prime error " + result.msg);
         return;
       }
-      console.log(result);
       // 成功取得 prime，整理訂單資料並傳給後端
       let orderData = {
         "prime": result.card.prime,
@@ -137,12 +136,15 @@ TPDirect.setupSDK(APP_ID, APP_KEY, "sandbox");
         }
       }
 
-      // const response = await orderSend(orderData)
-      // if (!response.data.payment.status === 0) {
-      //   document.querySelector('.booking__error').textContent = "輸入或連線錯誤，請重新嘗試";
-      //   return
-      // }
-      // window.location.href = '/thankyou?number=' + response.data.number
+      try {
+        const response = await orderSend(orderData)
+        if (!response.status === 0) throw new Error("連線錯誤，請重新嘗試")
+      } catch (error) {
+        document.querySelector('.booking__error').textContent = error.message;
+        return
+      }
+      
+      window.location.href = '/thankyou?number=' + response.number
     });
   });
 
