@@ -15,6 +15,7 @@ class OrdersAPI(Resource):
   @orders_space.marshal_with(orders_output_model)
   def post(self):
     data = orders_space.payload
+    print(data)
     order_default_data = get_order_data(data)
     booking_ids = get_booking_ids(data)
     
@@ -30,7 +31,7 @@ class OrdersAPI(Resource):
 
     response = requests.post(url, data=json.dumps(data_to_tappay), headers=headers)
     responseData = response.json()
-
+    print(response, responseData)
     if not responseData["status"] == 0: 
       create_order_and_delete_bookings(booking_ids, order_default_data, member_id)
       abort(500, '連線失敗，請重新嘗試')
